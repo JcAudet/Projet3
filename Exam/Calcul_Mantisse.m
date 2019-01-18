@@ -1,7 +1,7 @@
 clear all;
 clc;
 
-Mant=0.1;
+Mant=0.1234;
 Bin=[];
 i=1;
 
