@@ -8,7 +8,7 @@ format long
 %% Discretisation
 x=linspace(0,10,1001);
 dx=x(2)-x(1);
-t=linspace(0,0.3,3000);
+t=linspace(0,0.3,10001);
 dt=t(2)-t(1);
 
 %% Parameter of wave packet
@@ -32,7 +32,7 @@ Psy(1,:)=psy;
 % pot=zeros(1,length(x));
 sig_g=0.01;
 % pot = -1000 * 1i * exp( -((x-9).^2)/(2*sig_g^2) ) - 10000 * 1i * exp( -((x-9.8).^2)/(2*sig_g^2) );
-pot = -1000 * exp( -((x-7).^2)/(2*sig_g^2) );
+pot = -10000 * exp( -((x-7).^2)/(2*sig_g^2) );
 % pot=(x-5).^2;
 
 tic
