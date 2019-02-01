@@ -37,7 +37,7 @@ pot = -10000 * exp( -((x-7).^2)/(2*sig_g^2) );
 
 tic
 for j=2:length(t)
-    Psy(j,:)=run_kutt_4( x , Psy(j-1,:) , pot);
+    Psy(j,:)=run_kutt_2( x , Psy(j-1,:) , pot);
 end
 toc
 
