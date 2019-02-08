@@ -2,13 +2,13 @@ clear all;
 clc;
 close all;
 
-global dx dt; 
+global dx dt C A; 
 format long
 
 %% Discretisation
 x=linspace(0,10,1001);
 dx=x(2)-x(1);
-t=linspace(0,0.3,10001);
+t=linspace(0,0.3,1001);
 dt=t(2)-t(1);
 
 %% Parameter of wave packet
@@ -36,18 +36,20 @@ pot = -10000 * exp( -((x-7).^2)/(2*sig_g^2) );
 % pot=(x-5).^2;
 
 tic
+[C,A]=def_crank(x);
 for j=2:length(t)
-    Psy(j,:)=run_kutt_4( x , Psy(j-1,:) , pot);
+    Psy(j,:)=crank_nicholson( x , Psy(j-1,:));
+    j
 end
 toc
 
 figure
 for k = 1 : length(t)
     norm=sum(abs(Psy(k,:)))*dx;
-%     plot(x, real(Psy(k,:)),'b');
-%     hold on
-%     plot(x,imag(Psy(k,:)),'r');
-%     hold on
+    plot(x, real(Psy(k,:)),'b');
+    hold on
+    plot(x,imag(Psy(k,:)),'r');
+    hold on
     plot(x,abs(Psy(k,:)))
     hold on
     ylim([0 1.5]);

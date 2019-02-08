@@ -1,0 +1,6 @@
+function P = crank_nicholson(x , Psy)
+
+global dx dt a b g C A; 
+
+b=C*transpose(Psy) + transpose(c);
+P = A\b;

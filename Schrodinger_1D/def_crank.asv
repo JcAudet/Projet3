@@ -1,0 +1,21 @@
+function  = def_crank(x , Psy)
+
+global dt dx
+
+gamma=1-D*dt/(dx^2);
+alpha=1+D*dt/(dx^2);
+beta=-0.5*D*dt/(dx^2);
+
+%% Construction de C et c
+C=full(gallery('tridiag',length(x),-beta,gamma,-beta));
+
+c=zeros(1,length(x));
+c(1)=-2*beta*Psy(1);
+c(end)=-2*beta*Psy(end);
+
+%Le systeme a resoudre est de la forme A*(Psy_t+deltat)=b, ou b=C*(Psy_t)+c
+
+A=full(gallery('tridiag',length(x),beta,alpha,beta));
+
+
+
