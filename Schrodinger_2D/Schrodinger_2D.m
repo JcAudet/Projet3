@@ -6,12 +6,19 @@ global dx dy dt;
 format long
 
 %% Discretisation
-x=linspace(0,2,1001);
-dx=x(2)-x(1);
-y=linspace(0,2,1001);
-dy=y(2)-y(1);
-t=linspace(0,0.3,1001);
-dt=t(2)-t(1);
+% x=linspace(0,2,1001);
+% dx=x(2)-x(1);
+% y=linspace(0,2,1001);
+% dy=y(2)-y(1);
+% t=linspace(0,0.3,1001);
+% dt=t(2)-t(1);
+dx=0.025;
+dy=0.005;
+dt=2.5*10e-5;
+x=0:dx:1;
+y=0:dy:1.5;
+t=0:dt:0.002;
+
 
 %% Parameter of wave packet
 sig_x=0.03;
