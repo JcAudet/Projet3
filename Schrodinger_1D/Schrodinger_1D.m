@@ -37,6 +37,8 @@ psy=psy./norm(1);
 f_max=f(find(Phi==max(Phi)))+4*STD;
 c_max=2*pi*f_max/k;
 
+dt/c
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Critere Stabilite
 
