@@ -20,5 +20,5 @@ global A C
 % A=sparse( full(gallery('tridiag',b,a,b)) );
 % A=sparse( full(gallery('tridiag',length(x),b,a,b)));
 
-b= C * transpose(Psy);%+c;
+b= C * transpose(Psy);
 P = A \ b;

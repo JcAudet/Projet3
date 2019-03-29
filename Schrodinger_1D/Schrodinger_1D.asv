@@ -64,6 +64,8 @@ g=1-1i*dt/(dx^2)-1i*dt*V/2;
 
 C=sparse( full( gallery('tridiag',-b,g,-b)));
 
+C(1,)
+
 A=sparse( full(gallery('tridiag',b,a,b)) );
 
 %% Crank nich
