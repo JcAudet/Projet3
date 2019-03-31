@@ -9,13 +9,9 @@ format long
 %% Discretisation (OK)
 
 dx=0.01;
-dt_0=0.0001;
-dt_1=0.00005;
-dt_2=0.000025;
-t_0=0:dt_0:0.3;
-t_1=0:dt_1:0.3;
-t_2=0:dt_2:0.3;
-x=0:dx:10;
+dt=0.00001;
+t=0:dt:0.5;
+x=0:dx:100;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Parameter of wave packet (OK, voir valeurs reelles)
@@ -29,11 +25,8 @@ x_0=2;
 
 [psy,norme]=wp_ini(x,sig,k,x_0);
 
-norm_0=zeros(1,length(t_1));
-norm_1=zeros(1,length(t_1));
-norm_2=zeros(1,length(t_1));
-
-norm_0(1)=norme;norm_1(1)=norme;norm_2(1)=norme;
+norm=zeros(1,length(t));
+norm(1)=norme;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Analyse Freq et Critere stabilite
@@ -41,20 +34,17 @@ norm_0(1)=norme;norm_1(1)=norme;norm_2(1)=norme;
 [f,Phi,STD]=fft_wp(x,psy);
 f_max=f(find(Phi==max(Phi)))+4*STD;
 c_max=2*pi*f_max/k;
-C=dt_1/c_max;
+C=dt/c_max;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Initialisation of propagation matrix
 
-Psy_0=zeros(length(t_1),length(x));
-Psy_1=zeros(length(t_1),length(x));
-Psy_2=zeros(length(t_1),length(x));
-Psy_0(1,:)=psy;
-Psy_1(1,:)=psy;
-Psy_2(1,:)=psy;
+Psy=zeros(length(t),length(x));
+Psy(1,:)=psy;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Potentiel
+
 V=zeros(1,length(x));
 % sig_g=0.01;
 % pot = -1000 * 1i * exp( -((x-9).^2)/(2*sig_g^2) ) - 10000 * 1i * exp( -((x-9.8).^2)/(2*sig_g^2) );
@@ -99,87 +89,32 @@ V=zeros(1,length(x));
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Crank nich
-
 % Definition
 
-a=1+1i*dt_1/(dx^2)+1i*dt_1*V/2;
-b=ones(1,length(x)-1)*(-1i*dt_1/(2*dx^2));
-g=1-1i*dt_1/(dx^2)-1i*dt_1*V/2;
+a=1+1i*dt/(2*dx^2)+1i*V*dt/2;
+b_C=ones(1,length(x)-1)*(1i*dt/(4*dx^2));
+b_A=ones(1,length(x)-3)*(1i*dt/(4*dx^2));
+g=1-1i*dt/(2*dx^2)-1i*V*dt/2;
 
-C=sparse( full( gallery('tridiag',-b,g,-b)));
+C=sparse( full( gallery('tridiag',b_C,g,b_C)));
+C=C(2:end-1,:);
+C(1,1)=C(1,1)*2; C(end,end)=C(end,end)*2;
 
-A=sparse( full(gallery('tridiag',b,a,b)) );
+A=sparse( full(gallery('tridiag',-b_A,a(2:end-1),-b_A)) );
 
 % Calcul
 
 tic
-figure()
-for k=1:length(t_1)
+% figure()
+for k=1:length(t)-1
     
-    Psy_1(k+1,:)=crank_nicholson(Psy_1(k,:));
-    norm_1(k)=trapeze(abs(Psy_1(k,:)),x(1),x(end),length(Psy_1(k,:))-1);
+    D = C * transpose(Psy(k,:));
+    Psy(k+1,2:end-1)= A \ D ;
+    norm(k+1)=trapeze(abs(Psy(k+1,:)),x(1),x(end),length(Psy(k+1,:))-1);
     
-    plot(x, real(Psy_1(k,:)),'b');
-    hold on
-    plot(x,imag(Psy_1(k,:)),'r');
-    hold on
-    plot(x,abs(Psy_1(k,:)))
-    hold on
-    ylim([-10 10]);
-    plot(x,V)
-    hold off
-    title( sprintf('t = %.5f , Norme= %.6f', t_1(k), norm_1(k)));
-    pause(0.01);
-    
-end
-toc
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %% Runge Kutta O4
-% 
-% tic
-% % figure()
-% % for i=1:length(t_0)-1
-% %     Psy_0(i+1,:)=run_kutt_4(t_0,Psy_0(i,:),V);
-% %     norm_0(i+1)=trapeze(abs(Psy_0(i,:)),x(1),x(end),length(Psy_0(i,:))-1);
-% %     i
-% % end
-% for j=1:length(t_1)-1
-%     Psy(j+1,:)=run_kutt_4(t_1,Psy(j,:),V);
-%     norm_1(j+1)=trapeze(abs(Psy(j,:)),x(1),x(end),length(Psy(j,:))-1);
-%     j
-% end
-% % for k=1:length(t_2)-1
-% %     Psy_2(k+1,:)=run_kutt_4(t_2,Psy_2(k,:),V);
-% %     norm_2(k+1)=trapeze(abs(Psy_2(k,:)),x(1),x(end),length(Psy_2(k,:))-1);
-% %     k
-% % end
-% toc
-
-% for k=1:length(t_0)
-%     
-%     subplot(2,3,1)
-%     plot(x,abs(Psy_0(k,:)))
-%     subplot(2,3,2)
-%     plot(x,abs(Psy(k*2,:)))
-%     subplot(2,3,3)
-%     plot(x,abs(Psy_2(k*4,:)))
-%     subplot(2,3,4)
-%     plot(t_1(1:k),norm_0(1:k))
-%     subplot(2,3,5)
-%     plot(t_1(1:k*2),norm_1(1:k*2))
-%     subplot(2,3,6)
-%     plot(t_1(1:k*4),norm_2(1:k*4))
-%     
-%     pause(0.01)
-%     
-% end
 %     plot(x, real(Psy(k,:)),'b');
 %     hold on
-%     plot(x, Psy_re(k,:),'r');
+%     plot(x,imag(Psy(k,:)),'r');
 %     hold on
 %     plot(x,abs(Psy(k,:)))
 %     hold on
@@ -188,17 +123,19 @@ toc
 %     hold off
 %     title( sprintf('t = %.5f , Norme= %.6f', t(k), norm(k)));
 %     pause(0.01);
-% end
-% toc
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+    k
+end
+toc
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 figure 
 hold on
-plot(t_0,norm_0)
-plot(t_1,norm_1)
-plot(t_2,norm_2)
+plot(t,norm)
 title('Norm evolution')
 xlabel('Time')
 ylabel('Norm')
+
+

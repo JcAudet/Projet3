@@ -1,6 +1,5 @@
-function diff_f = eq_schro (psy , pot)
+function diff_f = eq_schro (dx, psy , pot)
 
-global dx
 
 diff_f=zeros(1,length(psy));
 
