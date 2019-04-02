@@ -3,11 +3,12 @@ clc
 close all
 
 
-x=linspace(0,10,1000);
-y=linspace(0,10,1000);
+x=linspace(0,10,10000);
+y=linspace(0,10,10000);
 
-barr=barr(x,y,1000,5,0.5,4,6,1,'Carre');
+barr=sparse( barr(x,y,1000,5,0.2,4,6,0.2,'Carre') );
 
 figure()
-hold on
-surf(x,y,barr)
+imagesc(x,y,barr)
+colormap hot
+

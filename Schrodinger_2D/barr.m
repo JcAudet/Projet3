@@ -47,13 +47,13 @@ elseif strcmp(type,'Gauss')
     y_j=[yf1-a/2 yf1+a/2 yf2-a/2 yf2+a/2];
     for i=1:2
         for j=1:4
-            gxy = ( exp( -((x-x_i(i)).^2./(2.*sig.^2)) ) )'* exp(-((y-y_j(j)).^2)./(2.*sig.^2));
+            gxy = ( exp( -((y-y_j(j)).^2./(2.*sig.^2)) ) )'* exp(-((x-x_i(i)).^2)./(2.*sig.^2));
             barr = barr + V .* gxy / max(max(gxy));
         end
     end
-
+    
     barr(~Y,:) = ones(size(barr(~Y,:),1),1) * V * G_x / max(G_x);
-
+    
     barr(:,X) = ( ones(size(barr(:,X),2),1) * V * G_y / max(G_y) )';
 
     barr(~Y,X)=V;
