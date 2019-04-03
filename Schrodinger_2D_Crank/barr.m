@@ -1,4 +1,4 @@
-function barr=barr(x,y,V,xm,h,yf1,yf2,a,type)
+function barr=barr(x,y,V,xm,h,y_m,d,a,type)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Variables
@@ -23,7 +23,7 @@ barr = zeros(length(y),length(x));
 if strcmp(type,'Carre')
 
     X = x>(xm-h/2) & x<(xm+h/2);
-    Y = y>(yf1-a/2) & y<(yf1+a/2) | y>(yf2-a/2) & y<(yf2+a/2);
+    Y = y>(y_m+d/2-a/2) & y<(y_m+d/2+a/2) | y>(y_m-d/2-a/2) & y<(y_m-d/2+a/2);
 
     barr(~Y,X)=V;
 

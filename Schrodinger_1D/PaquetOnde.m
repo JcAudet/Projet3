@@ -8,7 +8,7 @@ x=linspace(0,10,1001);
 dx=x(2)-x(1);
 t=linspace(0,1000,3000);
 dt=t(2)-t(1);
-
+    
 % Paquet d'onde
 
 sig=0.3;

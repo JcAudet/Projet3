@@ -7,3 +7,5 @@ psy(end)=0;
 psy_abs=abs(psy);
 nor=trapeze(psy_abs,x(1),x(end),length(psy_abs)-1);
 psy=psy./nor;
+
+nor=trapeze(psy_abs,x(1),x(end),length(psy_abs)-1);
