@@ -9,7 +9,7 @@ format long
 %% Discretisation (OK)
 
 dx=0.01;
-dt=0.00005;
+dt=0.0001;
 t=0:dt:0.3;
 x=0:dx:5;
 
@@ -94,28 +94,32 @@ tic
 figure()
 for k=1:length(t)-1
     
-    Psy(k+1,:)=run_kutt_4(t,Psy(k,:),V);
-    norm(k+1)=trapeze(abs(Psy(k,:)),x(1),x(end),length(Psy(k,:))-1);
+    Psy(k+1,:)=run_kutt_4(dt,dx,Psy(k,:),V);
+    psy_sq=(abs(Psy(k,:))).^2;
+    norm(k+1)=trapeze(psy_sq,x(1),x(end),length(Psy(k,:))-1);
     
-    subplot(2,1,1)
-    plot(x, real(Psy(k,:)),'b');
-    hold on
-    plot(x,abs(Psy(k,:)))
-    hold on
-    ylim([-10 10]);
-    plot(x,V)
-    hold off
-    title( sprintf('t = %.5f , Norme= %.6f', t(k), norm(k)));
-    pause(0.0001);
-    
-    subplot(2,1,2)
-    plot(t(1:k),norm(1:k))
-    title('Norm evolution')
-    xlabel('Time')
-    ylabel('Norm')
-    xlim([0,0.3])
+%     subplot(2,1,1)
+%     plot(x, real(Psy(k,:)),'b');
+%     hold on
+%     plot(x,psy_sq)
+%     hold on
+%     ylim([-10 10]);
+%     plot(x,V)
+%     hold off
+%     title( sprintf('t = %.5f , Norme= %.6f', t(k), norm(k)));
+%     pause(0.0001);
+%     
+%     subplot(2,1,2)
+%     plot(t(1:k),norm(1:k))
+%     title('Norm evolution')
+%     xlabel('Time')
+%     ylabel('Norm')
+%     xlim([0,0.3])
 end
 toc
+
+figure()
+plot(t,norm)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

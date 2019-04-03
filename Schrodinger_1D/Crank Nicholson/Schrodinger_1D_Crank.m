@@ -9,9 +9,9 @@ format long
 %% Discretisation (OK)
 
 dx=0.01;
-dt=0.00001;
+dt=0.0001;
 t=0:dt:0.5;
-x=0:dx:100;
+x=0:dx:10;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Parameter of wave packet (OK, voir valeurs reelles)
@@ -110,19 +110,19 @@ for k=1:length(t)-1
     
     D = C * transpose(Psy(k,:));
     Psy(k+1,2:end-1)= A \ D ;
-    norm(k+1)=trapeze(abs(Psy(k+1,:)),x(1),x(end),length(Psy(k+1,:))-1);
+    norm(k+1)=trapeze(abs(Psy(k+1,:)).^2,x(1),x(end),length(Psy(k+1,:))-1);
     
-%     plot(x, real(Psy(k,:)),'b');
-%     hold on
-%     plot(x,imag(Psy(k,:)),'r');
-%     hold on
-%     plot(x,abs(Psy(k,:)))
-%     hold on
-%     ylim([-10 10]);
-%     plot(x,V)
-%     hold off
-%     title( sprintf('t = %.5f , Norme= %.6f', t(k), norm(k)));
-%     pause(0.01);
+    plot(x, real(Psy(k,:)),'b');
+    hold on
+    plot(x,imag(Psy(k,:)),'r');
+    hold on
+    plot(x,abs(Psy(k,:)))
+    hold on
+    ylim([-10 10]);
+    plot(x,V)
+    hold off
+    title( sprintf('t = %.5f , Norme= %.6f', t(k), norm(k)));
+    pause(0.01);
     k
 end
 toc

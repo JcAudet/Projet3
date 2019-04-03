@@ -23,6 +23,7 @@ Kmax=1000;               % Indice de temps max
 
 x=0:dx:(Imax-1)*dx;
 y=0:dy:(Jmax-1)*dy;
+t=0:dt:(Kmax-1)*dt;
 
 x_0=x(end)/3;y_0=y(end)/2;    % Centre en (x,y)=(5,5)
 sig_x=1e-13;
@@ -37,7 +38,8 @@ kp=1e15*[1,0];
 % La condition initiale est une fonciton Psy(x,y). Pour representer une 
 % fonction de 2 variables dans un vecteur, il faut adopter une convention.
 
-[psy,norm] = wp_ini_2D(x,y,sig_x,sig_y,kp,x_0,y_0);
+norm=zeros(1,length(t));
+[psy,norm(1)] = wp_ini_2D(x,y,sig_x,sig_y,kp,x_0,y_0);
 
 Psy=[];
 Psy(:,1)=psy(:);
@@ -132,12 +134,12 @@ for k = 2 : Kmax
     Psy(:,k) = mldivide(M,b);
     
     Psy_mat(:,:,k)=vec2mat(Psy(:,k),Imax);
-    norm=trapeze_2D(abs(Psy_mat(:,:,k)),x(1),x(end),y(1),y(end),Imax-1,Jmax-1);
-    surf(x,y,abs(Psy_mat(:,:,k)));
+    norm(k)=trapeze_2D(abs(Psy_mat(:,:,k)).^2,x(1),x(end),y(1),y(end),Imax-1,Jmax-1);
+    surf(x,y,abs(Psy_mat(:,:,k)).^2);
     hold on
     surf(x,y,v_mat)
     hold off
-    title(sprintf('Norme: %.10f',norm))
+    title(sprintf('Norme: %.10f',norm(k)))
     view(0,90);
     pause(0.02);
 end
