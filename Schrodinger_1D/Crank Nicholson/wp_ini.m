@@ -8,5 +8,3 @@ nor=trapeze(abs(psy).^2,x(1),x(end),length(x)-1);
 psy=psy./sqrt(nor);
 
 nor=trapeze(abs(psy).^2,x(1),x(end),length(x)-1);
-
-disp('allo')

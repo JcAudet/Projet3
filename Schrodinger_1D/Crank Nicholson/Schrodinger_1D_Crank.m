@@ -10,14 +10,14 @@ format long
 
 dx=0.01;
 dt=0.0001;
-t=0:dt:0.5;
-x=0:dx:10;
+t=0:dt:0.06;
+x=0:dx:5;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Parameter of wave packet (OK, voir valeurs reelles)
 
 sig=0.3;
-k=20;
+k=50;
 x_0=2;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -45,46 +45,11 @@ Psy(1,:)=psy;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Potentiel
 
-V=zeros(1,length(x));
-% sig_g=0.01;
-% pot = -1000 * 1i * exp( -((x-9).^2)/(2*sig_g^2) ) - 10000 * 1i * exp( -((x-9.8).^2)/(2*sig_g^2) );
-% V = - 100000000 * 1i * exp( -((x-4).^2)/(2*sig_g^2) );
-% pot=(x-5).^2;
-
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %% Solution reelle
-% 
-% % Déplacement temporel
-% 
-% a=1;
-% m=9.109*10^(-31);
-% h_bar=6.62607004*10^(-34)/(2*pi);
-% 
-% norme_re=zeros(1,length(t));
-% Psy_re=zeros(length(t),length(x));
-% Psy_re(1,:)=abs(psy);
-% 
-% figure()
-% for i=1:length(t)-1
-%     
-%     y=sqrt(1+4*h_bar^2*t(i+1)^2/(m^2*a^4));
-%     
-%     for j=1:length(x)
-%         
-%         Psy_re(i+1,j)= sqrt(2/(pi*a^2)) * 1/y * exp(-2/(a*y)^2 * ( x(j)-x_0-h_bar * k * t(i+1)/m )^2);
-%     
-%     end 
-%     
-%     plot(x,Psy_re(i+1,:))
-%     norme_re(i)=trapeze(abs(psy),x(1),x(end),length(psy)-1);
-%     title(sprintf('Norme: %.10f',norme_re(i)))
-%     pause(0.002)
-%     
-% end
-% 
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% V=zeros(1,length(x));
+sig_g=0.05;
+V = 1000 * exp( -((x-3.5).^2)/(2*sig_g^2) );
+% V=zeros(1,length(x));
+% V(350:355)=1000;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -102,14 +67,18 @@ C(1,1)=C(1,1)*2; C(end,end)=C(end,end)*2;
 
 A=sparse( full(gallery('tridiag',-b_A,a(2:end-1),-b_A)) );
 
-% Calcul
+% Creation video
+vid = VideoWriter('Schrod_Crank','MPEG-4');
+vid.FrameRate = 120;
+open(vid)
 
+% Calcul
 tic
-% figure()
+gcf=figure();
 for k=1:length(t)-1
     
     D = C * transpose(Psy(k,:));
-    Psy(k+1,2:end-1)= A \ D ;
+    Psy(k+1,2:end-1)= mldivide(A,D);
     norm(k+1)=trapeze(abs(Psy(k+1,:)).^2,x(1),x(end),length(Psy(k+1,:))-1);
     
     plot(x, real(Psy(k,:)),'b');
@@ -121,11 +90,15 @@ for k=1:length(t)-1
     ylim([-10 10]);
     plot(x,V)
     hold off
-    title( sprintf('t = %.5f , Norme= %.6f', t(k), norm(k)));
-    pause(0.01);
-    k
+    title( sprintf('t = %.5f , Norme= %.10f', t(k), norm(k)));
+
+    F=getframe(gcf);
+    writeVideo(vid,F);
+    
 end
 toc
+
+close(vid)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

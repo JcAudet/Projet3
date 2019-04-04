@@ -19,18 +19,18 @@ dt=10^-25;
 
 Imax=150;                % Indices d'espaces max
 Jmax=150;
-Kmax=1000;               % Indice de temps max
+Kmax=250;               % Indice de temps max
 
 x=0:dx:(Imax-1)*dx;
 y=0:dy:(Jmax-1)*dy;
 t=0:dt:(Kmax-1)*dt;
 
-x_0=x(end)/3;y_0=y(end)/2;    % Centre en (x,y)=(5,5)
+x_0=x(end)/4;y_0=y(end)/2;    % Centre en (x,y)=(5,5)
 sig_x=1e-13;
 sig_y=1e-13;% Proprietse initiales
 lamda=5.4847*10^-12;    % Accelerer du repos avec 50KeV
 % kp=2*(pi/lamda)*[1,1];
-kp=1e15*[1,0];
+kp=1e16*[1,0];
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -47,7 +47,7 @@ Psy(:,1)=psy(:);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Calcul des facteurs
 
-v_mat=( barr(x,y,1000,7e-13,0.2e-13,y(end)/2,1e-13,0.4e-13,'Carre') )';
+v_mat=( barr(x,y,1000,x(length(x)/2),2e-14,y(length(y)/2),1e-13,6e-14,'Carre') )';
 V=v_mat(:);
 
 b = 1 + 1i*hbar*dt*(1/dx^2 + 1/dy^2)/(2*m) + 1i*dt*V/(2*hbar);
@@ -127,8 +127,13 @@ toc
 Psy_mat=zeros(Jmax,Imax,Kmax);
 Psy_mat(:,:,1)=psy;
 
+% Creation video
+vid = VideoWriter('Schrod_Crank_Diffra','MPEG-4');
+vid.FrameRate = 60;
+open(vid)
+
 tic
-figure()
+gcf=figure();
 for k = 2 : Kmax
     b=M2*Psy(:,k-1)+v2-v;
     Psy(:,k) = mldivide(M,b);
@@ -139,10 +144,13 @@ for k = 2 : Kmax
     hold on
     surf(x,y,v_mat)
     hold off
-    title(sprintf('Norme: %.10f',norm(k)))
+    title(sprintf('Temps = %e  Norme: %.10f',t(k),norm(k)))
     view(0,90);
-    pause(0.02);
+    
+    F=getframe(gcf);
+    writeVideo(vid,F);
+    
 end
 toc
 
-
+close(vid)
