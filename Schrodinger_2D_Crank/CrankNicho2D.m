@@ -47,7 +47,8 @@ Psy(:,1)=psy(:);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Calcul des facteurs
 
-v_mat=( barr(x,y,1000,x(length(x)/2),2e-14,y(length(y)/2),1e-13,6e-14,'Carre') )';
+v_mat=( barr(x,y,1000,x(length(x)/2),2e-14,y(length(y)/2),12e-14,10e-14,'Carre') )';
+% v_mat=sparse( ( barr_simple(x,y,1000,x(length(x)/2),1e-14,y(length(y)/2),8e-14,'Carre') )' );
 V=v_mat(:);
 
 b = 1 + 1i*hbar*dt*(1/dx^2 + 1/dy^2)/(2*m) + 1i*dt*V/(2*hbar);
@@ -138,14 +139,17 @@ for k = 2 : Kmax
     b=M2*Psy(:,k-1)+v2-v;
     Psy(:,k) = mldivide(M,b);
     
+    subplot(1,5,[1 2 3])
     Psy_mat(:,:,k)=vec2mat(Psy(:,k),Imax);
     norm(k)=trapeze_2D(abs(Psy_mat(:,:,k)).^2,x(1),x(end),y(1),y(end),Imax-1,Jmax-1);
-    surf(x,y,abs(Psy_mat(:,:,k)).^2);
-    hold on
-    surf(x,y,v_mat)
+    surf(x,y,abs(Psy_mat(:,:,k)).^2,'edgecolor','none');
     hold off
     title(sprintf('Temps = %e  Norme: %.10f',t(k),norm(k)))
     view(0,90);
+    
+    subplot(1,5,[4 5])
+    plot(abs(Psy_mat(:,floor(2*length(x)/3),k)).^2,y)
+    xlim([-2e25 2e25])
     
     F=getframe(gcf);
     writeVideo(vid,F);

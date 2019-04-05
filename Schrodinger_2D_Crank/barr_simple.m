@@ -1,4 +1,4 @@
-function barr=barr(x,y,V,xm,h,ym,d,a,type)
+function barr=barr(x,y,V,xm,h,ym,a,type)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Variables
@@ -24,10 +24,9 @@ barr = zeros(length(y),length(x));
 if strcmp(type,'Carre')
 
     X = x>(xm-h/2) & x<(xm+h/2);
-    Y = y>(ym+d/2-a/2) & y<(ym+d/2+a/2) | y>(ym-d/2-a/2) & y<(ym-d/2+a/2);
+    Y = y>(ym-a/2) & y<(ym+a/2);
 
     barr(~Y,X)=V;
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -37,24 +36,22 @@ if strcmp(type,'Carre')
 elseif strcmp(type,'Gauss')
 
 %   Parametres
-    sig_x=h/15;
-    sig_y=a/15;
+    sig=h/10;
     
 %   Conditions
     X = x>(xm-h/2) & x<(xm+h/2-x(2)+x(1));
-    Y = y>(ym-d/2-a/2) & y<(ym-d/2+a/2) | y>(ym+d/2-a/2) & y<(ym+d/2+a/2);
+    Y = y>(ym-a/2) & y<(ym+a/2);
 
 %   Creation des potentiel frontiere en x et y
-    G_x = exp( -(x-xm-h/2).^2 / (2*sig_x^2) ) + exp( -(x-xm+h/2).^2 / (2*sig_x^2) );
-    G_y = exp( -(y-ym-d/2-a/2).^2 / (2*sig_y^2) ) + exp( -(y-ym-d/2+a/2).^2 / (2*sig_y^2) )...
-        + exp( -(y-ym+d/2-a/2).^2 / (2*sig_y^2) ) + exp( -(y-ym+d/2+a/2).^2 / (2*sig_y^2) );
+    G_x = exp( -(x-xm-h/2).^2 / (2*sig^2) ) + exp( -(x-xm+h/2).^2 / (2*sig^2) );
+    G_y = exp( -(y-ym-a/2).^2 / (2*sig^2) ) + exp( -(y-ym+a/2).^2 / (2*sig^2) );
 
 %   Creation des coins frontiere
     x_i=[xm-h/2 xm+h/2];
-    y_j=[ym-d/2-a/2 ym-d/2+a/2 ym+d/2-a/2 ym+d/2+a/2];
-    for i=1:2
-        for j=1:4
-            gxy = ( exp( -((y-y_j(j)).^2./(2.*sig_y.^2)) ) )'* exp(-((x-x_i(i)).^2)./(2.*sig_x.^2));
+    y_j=[ym-a/2 ym+a/2 ];
+    for i=1:length(x_i)
+        for j=1:length(y_j)
+            gxy = ( exp( -((y-y_j(j)).^2./(2.*sig.^2)) ) )'* exp(-((x-x_i(i)).^2)./(2.*sig.^2));
             barr = barr + V .* gxy / max(max(gxy));
         end
     end

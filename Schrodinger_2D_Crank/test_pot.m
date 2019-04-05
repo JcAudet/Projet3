@@ -14,7 +14,7 @@ Kmax=1000;               % Indice de temps max
 x=0:dx:(Imax-1)*dx;
 y=0:dy:(Jmax-1)*dy;
 
-barr=sparse( barr(x,y,1000,x(length(x)/2),1e-13,y(length(y)/2),2e-13,1e-13,'Gauss') );
+barr=barr(x,y,1000,x(length(x)/2),30e-14,y(length(y)/2),1e-13,6e-14,'Gauss');
 
 figure()
 surf(x,y,barr)

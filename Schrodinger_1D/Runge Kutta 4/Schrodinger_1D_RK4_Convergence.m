@@ -16,7 +16,7 @@ Dx=[0.05 0.01 0.005 0.001];
 dt=0.0001;
 t=0:dt:0.05;
 
-norm_x=zeros(length(Dx),length(t));
+norm_x=zeros( length(Dx),length(t) );
 
 for i=1:length(Dx)
     
@@ -34,17 +34,33 @@ for i=1:length(Dx)
     i
 end
 
+err_x=zeros(length(Dx)-1,length(t));
+err_x_m=zeros(length(Dx)-1,1);
+
+% Calcul erreur
+for i=1:length(Dx)-1
+    
+    err_x(i,:)=abs(norm_x(i+1,:)-norm_x(i,:));
+    err_x_m(i)=sum(err_x(i,:))/length(err_x(i,:));
+    
+end
+
 figure()
 hold on
-for i=1:length(Dx)
-    plot(t,norm_x(i,:)-1)
+for i=1:length(Dx)-2
+    plot(t,norm_x(i,:))
+    p=log(err_x_m(i+1)/err_x_m(i))/(log(Dx(i+1))/log(Dx(i)))
 end
+plot(t,norm_x(i+1,:))
+
 legend(sprintf('dx = %f',Dx(1)),sprintf('dx = %f',Dx(2)),sprintf('dx = %f',Dx(3)),sprintf('dx = %f',Dx(4)))
 title('Erreur en fonction du temps et de la discretisation de l''espace')
 
-figure()
-loglog(Dx,abs(norm_x(:,end)-1))
 
+figure()
+plot(log(Dx(1:end-1)),log(err_x_m(:,:)))
+
+% cftool(log(Dx(1:end-1)),log(err_x(:,:)))
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Etude convergence DT
