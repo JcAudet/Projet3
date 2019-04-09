@@ -77,8 +77,8 @@ v2=zeros(length(f),1);
 
 tic
 
-for j = 1 : Jmax
-    for i = 1 : Imax 
+for j = 1 : length(y)
+    for i = 1 : length(x)
 
         ind=indexeur(i,j);
         
@@ -90,7 +90,7 @@ for j = 1 : Jmax
             v2(ind)=v2(ind)+g*Psy_haut(j);
         end
         
-        if i < Imax 
+        if i < length(x)
             M(ind,indexeur(i+1,j)) = a;
             M2(ind,indexeur(i+1,j)) = g;
         else
@@ -98,7 +98,7 @@ for j = 1 : Jmax
             v2(ind)=v2(ind)+h*Psy_bas(j);
         end
         
-        if j < Jmax 
+        if j < length(y)
             M(ind,indexeur(i,j+1)) = d;
             M2(ind,indexeur(i,j+1)) = k;
         else
@@ -125,7 +125,7 @@ toc
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Calcul
 
-Psy_mat=zeros(Jmax,Imax,Kmax);
+Psy_mat=zeros(length(y),length(x),length(t));
 Psy_mat(:,:,1)=psy;
 
 % Creation video
@@ -135,13 +135,13 @@ open(vid)
 
 tic
 gcf=figure();
-for k = 2 : Kmax
+for k = 2 : length(t)
     b=M2*Psy(:,k-1)+v2-v;
     Psy(:,k) = mldivide(M,b);
     
     subplot(1,5,[1 2 3])
-    Psy_mat(:,:,k)=vec2mat(Psy(:,k),Imax);
-    norm(k)=trapeze_2D(abs(Psy_mat(:,:,k)).^2,x(1),x(end),y(1),y(end),Imax-1,Jmax-1);
+    Psy_mat(:,:,k)=vec2mat(Psy(:,k),length(x));
+    norm(k)=trapeze_2D(abs(Psy_mat(:,:,k)).^2,x(1),x(end),y(1),y(end),length(x)-1,length(y)-1);
     surf(x,y,abs(Psy_mat(:,:,k)).^2,'edgecolor','none');
     hold off
     title(sprintf('Temps = %e  Norme: %.10f',t(k),norm(k)))
