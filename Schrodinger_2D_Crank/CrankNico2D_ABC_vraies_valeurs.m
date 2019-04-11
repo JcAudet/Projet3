@@ -49,7 +49,7 @@ Psy(:,1)=psy(:);
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Calcul des facteurs
 
-v_mat=( barr(x,y,1000,x(length(x)/2),2e-14,y(length(y)/2),12e-14,10e-14,'Carre') )';
+v_mat=( barr(x,y,1000,x(length(x)/2),4e-11,y(length(y)/2),15e-11,10e-11,'Carre') )';
 % v_mat=sparse( ( barr_simple(x,y,1000,x(length(x)/2),1e-14,y(length(y)/2),8e-14,'Carre') )' );
 V=v_mat(:);
 
@@ -57,28 +57,21 @@ b = 1 + 1i*hbar*dt*(1/dx^2 + 1/dy^2)/(2*m) + 1i*dt*V/(2*hbar);
 f = 1 - 1i*hbar*dt*(1/dx^2 + 1/dy^2)/(2*m) - 1i*dt*V/(2*hbar);
 
 c=-1i*hbar*dt*(1/dx^2)/(4*m);
-a=c;
 d=-1i*hbar*dt*(1/dy^2)/(4*m);
-e=d;
 
 g=1i*hbar*dt*(1/dx^2)/(4*m);
-h=g;
 k=1i*hbar*dt*(1/dy^2)/(4*m);
-p=k;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Creation de M et M2, v et v2
 
 %M=sparse(ones(length(b_vect),1),ones(length(b_vect),1),b_vect);
 M=diag(b);
-v=zeros(length(b),1);
 
 %M2=sparse(ones(length(b_vect),1),ones(length(b_vect),1),f_vect);
 M2=diag(f);
-v2=zeros(length(f),1);
 
 tic
-
 for j = 1 : Jmax
     for i = 1 : Imax 
 
@@ -86,34 +79,22 @@ for j = 1 : Jmax
         
         if i > 1
             M(ind,indexeur(i-1,j)) = c;
-            M2(ind,indexeur(i-1,j)) = h;
-        else
-            v(ind)=v(ind)+c*Psy_haut(j);
-            v2(ind)=v2(ind)+g*Psy_haut(j);
+            M2(ind,indexeur(i-1,j)) = g;
         end
         
         if i < Imax 
-            M(ind,indexeur(i+1,j)) = a;
+            M(ind,indexeur(i+1,j)) = c;
             M2(ind,indexeur(i+1,j)) = g;
-        else
-            v(ind)=v(ind)+a*Psy_bas(j);
-            v2(ind)=v2(ind)+h*Psy_bas(j);
         end
         
         if j < Jmax 
             M(ind,indexeur(i,j+1)) = d;
             M2(ind,indexeur(i,j+1)) = k;
-        else
-            v(ind)=v(ind)+d*Psy_droite(i);
-            v2(ind)=v2(ind)+k*Psy_droite(i);
         end
         
         if j > 1
-            M(ind,indexeur(i,j-1)) = e;
-            M2(ind,indexeur(i,j-1)) = p;
-        else
-            v(ind)=v(ind)+e*Psy_gauche(i);
-            v2(ind)=v2(ind)+p*Psy_gauche(i);
+            M(ind,indexeur(i,j-1)) = d;
+            M2(ind,indexeur(i,j-1)) = k;
         end
     end
 end
@@ -123,6 +104,7 @@ tic
 M=sparse(M);
 M2=sparse(M2);
 toc
+
 %% ABC's 2D
 kx=kp(1);
 ky=kp(2);
@@ -202,10 +184,9 @@ open(vid)
 tic
 gcf=figure();
 for k = 2 : Kmax
-    b=M2*Psy(:,k-1)+v2-v;
+    b=M2*Psy(:,k-1);
     Psy(:,k) = mldivide(M,b);
  
-    
     for j=1:Imax
             if j==1
                Psy(Imax,k)=(C1*Psy(Imax*2,k-1)+C7*Psy(Imax,k-1))/C2;
@@ -214,8 +195,8 @@ for k = 2 : Kmax
                Psy(Imax^2,k)=(C3*Psy(Imax*(j-1),k-1)+C7*Psy(Imax*j,k-1))/C2;
                Psy(Imax^2-1,k)=(C6*Psy((Imax*(j-1))-1,k-1)+C8*Psy(Imax*(j)-1,k-1))/C5;   
             else
-            Psy(Imax*j,k)=(C1*Psy(Imax*(j+1),k-1)+C3*Psy(Imax*(j-1),k-1)+C7*Psy(Imax*j,k-1))/C2;
-            Psy((Imax*j)-1,k)=(C4*Psy(Imax*(j+1)-1,k-1)+C6*Psy((Imax*(j-1))-1,k-1)+C8*Psy(Imax*(j)-1,k-1))/C5;
+                Psy(Imax*j,k)=(C1*Psy(Imax*(j+1),k-1)+C3*Psy(Imax*(j-1),k-1)+C7*Psy(Imax*j,k-1))/C2;
+                Psy((Imax*j)-1,k)=(C4*Psy(Imax*(j+1)-1,k-1)+C6*Psy((Imax*(j-1))-1,k-1)+C8*Psy(Imax*(j)-1,k-1))/C5;
             end
     end
   
@@ -224,13 +205,15 @@ for k = 2 : Kmax
     Psy_mat(:,:,k)=vec2mat(Psy(:,k),Imax);
     norm(k)=trapeze_2D(abs(Psy_mat(:,:,k)).^2,x(1),x(end),y(1),y(end),Imax-1,Jmax-1);
     surf(x,y,abs(Psy_mat(:,:,k)).^2,'edgecolor','none');
+    hold on
+    surf(x,y,2e19*v_mat'/1000)
     hold off
     title(sprintf('Temps = %e  Norme: %.10f',t(k),norm(k)))
-    view(0,90);
+    view(-60,20);
     
     subplot(1,5,[4 5])
     plot(abs(Psy_mat(:,floor(2*length(x)/3),k)).^2,y)
-    xlim([-2e25 2e25])
+    xlim([-2e19 2e19])
     
     F=getframe(gcf);
     writeVideo(vid,F);

@@ -56,25 +56,19 @@ b = 1 + 1i*hbar*dt*(1/dx^2 + 1/dy^2)/(2*m) + 1i*dt*V/(2*hbar);
 f = 1 - 1i*hbar*dt*(1/dx^2 + 1/dy^2)/(2*m) - 1i*dt*V/(2*hbar);
 
 c=-1i*hbar*dt*(1/dx^2)/(4*m);
-a=c;
 d=-1i*hbar*dt*(1/dy^2)/(4*m);
-e=d;
 
 g=1i*hbar*dt*(1/dx^2)/(4*m);
-h=g;
 k=1i*hbar*dt*(1/dy^2)/(4*m);
-p=k;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Creation de M et M2, v et v2
 
 %M=sparse(ones(length(b_vect),1),ones(length(b_vect),1),b_vect);
 M=diag(b);
-v=zeros(length(b),1);
 
 %M2=sparse(ones(length(b_vect),1),ones(length(b_vect),1),f_vect);
 M2=diag(f);
-v2=zeros(length(f),1);
 
 tic
 
@@ -85,34 +79,22 @@ for j = 1 : Jmax
         
         if i > 1
             M(ind,indexeur(i-1,j)) = c;
-            M2(ind,indexeur(i-1,j)) = h;
-        else
-            v(ind)=v(ind)+c*Psy_haut(j);
-            v2(ind)=v2(ind)+g*Psy_haut(j);
+            M2(ind,indexeur(i-1,j)) = g;
         end
         
         if i < Imax 
-            M(ind,indexeur(i+1,j)) = a;
+            M(ind,indexeur(i+1,j)) = c;
             M2(ind,indexeur(i+1,j)) = g;
-        else
-            v(ind)=v(ind)+a*Psy_bas(j);
-            v2(ind)=v2(ind)+h*Psy_bas(j);
         end
         
         if j < Jmax 
             M(ind,indexeur(i,j+1)) = d;
             M2(ind,indexeur(i,j+1)) = k;
-        else
-            v(ind)=v(ind)+d*Psy_droite(i);
-            v2(ind)=v2(ind)+k*Psy_droite(i);
         end
         
         if j > 1
-            M(ind,indexeur(i,j-1)) = e;
-            M2(ind,indexeur(i,j-1)) = p;
-        else
-            v(ind)=v(ind)+e*Psy_gauche(i);
-            v2(ind)=v2(ind)+p*Psy_gauche(i);
+            M(ind,indexeur(i,j-1)) = d;
+            M2(ind,indexeur(i,j-1)) = k;
         end
     end
 end
@@ -197,7 +179,7 @@ Psy_mat(:,:,1)=psy;
 tic
 figure()
 for k = 2 : Kmax
-    b=M2*Psy(:,k-1)+v2-v;
+    b=M2*Psy(:,k-1);
     Psy(:,k) = mldivide(M,b);
     
     for j=1:Imax

@@ -4,8 +4,8 @@ function  p = indexeur(i,j)
 %supposer foncitonner pour maille carre, estce que ca fonciton pour
 %rectangle?
 
-global Imax
+global ly
 
-p=i+(j-1)*Imax;
+p=i+(j-1)*ly;
 
 end
