@@ -13,9 +13,9 @@ m=9.10938*10^-31;
 
 global ly
 
-dx=1e-11;     % On veut que les dx et dt soit au environ 10x la largeur du packet d'onde
-dy=1e-11;
-dt=5e-20;
+dx=0.68e-11;     % On veut que les dx et dt soit au environ 10x la largeur du packet d'onde
+dy=0.68e-11;
+dt=5e-19;
 
 x=0:dx:1e-9;
 y=0:dy:1e-9;
@@ -32,6 +32,9 @@ lamda=5e-11;    % Accelerer du repos avec 50KeV
 kp=2*(pi/lamda)*[1 0];
 
 
+z=zeros(length(x),length(y));
+z(:,floor(2*length(y)/3))=5*10^(19);
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% CONDITIONS INITIALES
 % La condition initiale est une fonciton Psy(x,y). Pour representer une 
@@ -43,7 +46,8 @@ norm=zeros(1,length(t));
 Psy=[];
 Psy(:,1)=psy(:);
 
-Psy_mat=zeros(length(y),length(x),length(t));
+% Psy_mat=zeros(length(y),length(x),length(t));
+Psy_mat=zeros(length(y),length(x),1);
 Psy_mat(:,:,1)=psy;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -120,24 +124,54 @@ gcf=figure();
 for k = 1 : length(t)-1
     b=M2*Psy(:,k);
     Psy(:,k+1) = mldivide(M,b);
+        
+    %Psy_mat(:,:,k+1)=vec2mat(Psy(:,k+1),length(y))';
+    Psy_mat(:,:,1)=vec2mat(Psy(:,k+1),length(y))';
+    norm(k+1)=trapeze_2D(abs(Psy_mat(:,:,1)).^2,x(1),x(end),y(1),y(end),length(x)-1,length(y)-1);
+   
+colormap('gray')
+
+% map = [0 0 0
+%     0.80 0.80 0.80
+%     0.81 0.81 0.81
+%     0.82 0.82 0.82
+%     0.83 0.83 0.83
+%     0.84 0.84 0.84
+%     0.85 0.85 0.85
+%     0.86 0.86 0.86
+%     0.87 0.87 0.87
+%     0.88 0.88 0.88
+%     0.89 0.89 0.89
+%     0.90 0.90 0.90
+%     0.91 0.91 0.91
+%     0.92 0.92 0.92
+%     0.93 0.93 0.93
+%     0.94 0.94 0.94
+%     0.95 0.95 0.95
+%     0.96 0.96 0.96
+%     0.97 0.97 0.97
+%     0.98 0.98 0.98
+%     0.99 0.99 0.99
+%     1 1 1];
+% colormap(map)
+
+subplot(1,5,[1 2 3])      
+surf(x,y,abs(Psy_mat(:,:,1)).^2,'edgecolor','none');
+% hold on
+% surf(x,y,z,'edgecolor','none')
+% %plot3([floor(2*length(y)/3), floor(2*length(y)/3)],[y(1) y(end)],[0 0])
+% hold off
+title(sprintf('Temps = %e  Norme: %.10f',t(k),norm(k)))
+view(0,90);
+ 
+subplot(1,5,[4 5])
+plot(abs(Psy_mat(:,floor(2*length(x)/3),1)).^2,y,'b')
+xlim([0 5e19])
     
-    Psy_mat(:,:,k+1)=vec2mat(Psy(:,k+1),length(y))';
-    norm(k+1)=trapeze_2D(abs(Psy_mat(:,:,k+1)).^2,x(1),x(end),y(1),y(end),length(x)-1,length(y)-1);
-    
-%     subplot(1,5,[1 2 3])    
-    surf(x,y,abs(Psy_mat(:,:,k)).^2,'edgecolor','none');
-    hold off
-    title(sprintf('Temps = %e  Norme: %.10f',t(k),norm(k)))
-    view(0,90);
-    
-%     subplot(1,5,[4 5])
-%     plot(abs(Psy_mat(:,floor(2*length(x)/3),k)).^2,y,'b')
-%     xlim([0 5e19])
-    
-    F=getframe(gcf);
-    writeVideo(vid,F);
-    
+F=getframe(gcf);
+writeVideo(vid,F);   
 end
 toc
 
+close(vid)
 close(vid)
