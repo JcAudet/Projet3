@@ -2,23 +2,28 @@ clear all;
 clc;
 close all;
 
-global dx C A; 
+global dx C A sig x_0 k hbar m; 
 format long
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Discretisation (OK)
 
-dx=0.01;
-dt=0.0001;
-t=0:dt:0.06;
+hbar=1;
+m=1;
+
+dx=0.1;
+dt=0.00001;
+t=0:dt:0.05;
 x=0:dx:5;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Parameter of wave packet (OK, voir valeurs reelles)
+%% Wave packet initialisation 
 
+% Parametres
 sig=0.3;
-k=50;
+k=20;
 x_0=2;
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Wave packet initialisation (OK)
@@ -29,14 +34,6 @@ norm=zeros(1,length(t));
 norm(1)=norme;
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%% Analyse Freq et Critere stabilite
-
-[f,Phi,STD]=fft_wp(x,psy);
-f_max=f(find(Phi==max(Phi)))+4*STD;
-c_max=2*pi*f_max/k;
-C=dt/c_max;
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Initialisation of propagation matrix
 
 Psy=zeros(length(t),length(x));
@@ -45,9 +42,9 @@ Psy(1,:)=psy;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Potentiel
 
-% V=zeros(1,length(x));
-sig_g=0.05;
-V = 1000 * exp( -((x-3.5).^2)/(2*sig_g^2) );
+V=zeros(1,length(x));
+% sig_g=0.05;
+% V = 1000 * exp( -((x-3.5).^2)/(2*sig_g^2) );
 % V=zeros(1,length(x));
 % V(350:355)=1000;
 
@@ -67,48 +64,52 @@ C(1,1)=C(1,1)*2; C(end,end)=C(end,end)*2;
 
 A=sparse( full(gallery('tridiag',-b_A,a(2:end-1),-b_A)) );
 
-% Creation video
-vid = VideoWriter('Schrod_Crank','MPEG-4');
-vid.FrameRate = 120;
-open(vid)
 
 % Calcul
 tic
 gcf=figure();
-for k=1:length(t)-1
+for j=1:length(t)-1
     
-    D = C * transpose(Psy(k,:));
-    Psy(k+1,2:end-1)= mldivide(A,D);
-    norm(k+1)=trapeze(abs(Psy(k+1,:)).^2,x(1),x(end),length(Psy(k+1,:))-1);
+    D = C * transpose(Psy(j,:));
+    Psy(j+1,2:end-1)= mldivide(A,D);
     
-    plot(x, real(Psy(k,:)),'b');
-    hold on
-    plot(x,imag(Psy(k,:)),'r');
-    hold on
-    plot(x,abs(Psy(k,:)))
-    hold on
-    ylim([-10 10]);
-    plot(x,V)
+    plot(x,abs(Psy(j,:)).^2)
     hold off
-    title( sprintf('t = %.5f , Norme= %.10f', t(k), norm(k)));
-
-    F=getframe(gcf);
-    writeVideo(vid,F);
     
+    pause(0.0001)
 end
 toc
 
-close(vid)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-figure 
-hold on
-plot(t,norm)
-title('Norm evolution')
-xlabel('Time')
-ylabel('Norm')
+
+
+
+% figure()
+% subplot(1,3,1)
+% plot(x,abs(Psy(1,:).^2),'r','linewidth',1)
+% hold on
+% plot(x,abs(psy(1,:)).^2,'b--','linewidth',1)
+% ylim([0 3]);
+% ylabel('$ |\Psi|^2 $','Interpreter','latex')
+% title(sprintf('Temps = %.2f seconde',t(1)))
+% subplot(1,3,2)
+% plot(x,abs(Psy(2500,:).^2),'r','linewidth',1)
+% hold on
+% plot(x,abs(psy(2500,:)).^2,'b--','linewidth',1)
+% ylim([0 3]);
+% xlabel('x(u.a.)')
+% title(sprintf('Temps = %.2f seconde',t(2500)))
+% subplot(1,3,3)
+% plot(x,abs(Psy(4000,:).^2),'r','linewidth',1)
+% hold on
+% plot(x,abs(psy(4000,:)).^2,'b--','linewidth',1)
+% ylim([0 3]);
+% legend('Résolution numérique','Solution analytique')
+% title(sprintf('Temps = %.2f seconde',t(4000)))
+
 
 

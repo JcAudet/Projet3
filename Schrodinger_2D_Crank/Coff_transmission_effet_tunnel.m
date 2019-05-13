@@ -1,19 +1,25 @@
 clear all
 clc
 
+m=9.10938*10^-31;           %Masse de l'électron
+hbar=6.62607*10^-34*(1/(2*pi)); 
+
 I=1000;
-V0=linspace(0,2*10^(-13),I);
+V0=linspace(0,1e-10,I);
 T=zeros(1,I);
 R=zeros(1,I);
 
+lambda=5e-11;    
+kp=2*(pi/lambda)*[1,0];
+E=hbar*kp(1)*1.602e-19/m;
+
+a=1.5e-11;                 %Largeur de la barrière en m
+
+
 for i=1:1:I
-V=V0(i);                    %Potentiel de la barrière 
-E = 8.0108831e-14;  %Energie de l'électron, 50KeV
-a=10^(-12);                  %Largeur de la barrière en m
-m=9.10938*10^-31;           %Masse de l'électron
-hbar=6.62607*10^-34*(1/(2*pi)); 
-lambda=a*sqrt(2*m*V/hbar^2);
-epsilon=E/V;
+    V=V0(i);
+    epsilon=E/V;%Potentiel de la barrière 
+
     if epsilon > 1
      T1=(1+(1/(4*epsilon*(epsilon-1)))*(sin(lambda*sqrt(epsilon-1)))^2)^(-1);
      R1=(1+(4*epsilon*(epsilon-1))/(sin(lambda*sqrt(epsilon-1)))^2)^(-1);
