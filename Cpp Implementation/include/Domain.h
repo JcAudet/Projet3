@@ -2,13 +2,26 @@
 #define DOMAIN_H
 
 
+namespace diff_elec
+{
+
+/*!
+* /class Domain
+* /author Jean-Christophe Gagnon-Audet
+* /date 14/05/19
+* /brief This class defines the finite domain for calculation
+*/
+
 class Domain
 {
     public:
-        Domain(xI,xF,dx,yI,yF,dy);
+
+        // Virtual Destructor
         virtual ~Domain();
 
         // Getters
+
+        unsigned int GetTotNumPoint(){return totNumPoints_;}
 
         // Setters
 
@@ -21,5 +34,7 @@ class Domain
 
 
 };
+
+}; // Namespace: diff_elec
 
 #endif // DOMAIN_H
