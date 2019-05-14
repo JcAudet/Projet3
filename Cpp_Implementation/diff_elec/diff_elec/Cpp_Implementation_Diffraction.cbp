@@ -33,9 +33,10 @@
 		<Compiler>
 			<Add option="-Wall" />
 		</Compiler>
-		<Unit filename="../Projet3/Cpp Implementation/Source.cpp" />
-		<Unit filename="../Projet3/Cpp Implementation/implementation/Domain.cpp" />
-		<Unit filename="../Projet3/Cpp Implementation/include/Domain.h" />
+		<Unit filename="../include/diff_elec.h" />
+		<Unit filename="../include/diff_elec_bits/Domain.h" />
+		<Unit filename="../src/Domain.cpp" />
+		<Unit filename="../tests/UnitTest-Domain.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

@@ -1,16 +1,16 @@
 # --------------------------------------------------------------------------- #
-# Author:       Francois Fillion-Gourdeau             #
-# Date:         2018-02-02                                                    #
+# Author:       Jean-Christophe Gagnon-Audet			              #
+# Date:         2019-05-14                                                    #
 # Description:  CMake compilation instructions.                               #
 # ----------------------------------------------------------------------------#
 
 # ----------------------------------------------------------------- #
 # --                 Name and version of library                 -- #
 # ----------------------------------------------------------------- #
-project(KbPro)
-set (KbPro_VERSION_MAJOR 0)
-set (KbPro_VERSION_MINOR 1)
-set (KbPro_VERSION_RELEASE 0)
+project(DiffElec)
+set (DiffElec_VERSION_MAJOR 0)
+set (DiffElec_VERSION_MINOR 1)
+set (DiffElec_VERSION_RELEASE 0)
 
 # ----------------------------------------------------------------- #
 # --               Configuration and Dependencies                -- #
@@ -35,35 +35,33 @@ set(LIBS ${LIBS} ${BOOST_LIBRARIES})
 #include_directories(${MPI_INCLUDE_PATH})
 #link_libraries(${MPI_LIBRARIES})
 
-find_package(OpenMP REQUIRED)
-include_directories(${OpenMP_INCLUDE_PATH})
-set(LIBS ${LIBS} ${OpenMP_LIBRARIES})
-if(OPENMP_FOUND)
-set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
-endif()
+#find_package(OpenMP REQUIRED)
+#include_directories(${OpenMP_INCLUDE_PATH})
+#set(LIBS ${LIBS} ${OpenMP_LIBRARIES})
+#if(OPENMP_FOUND)
+#set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OpenMP_C_FLAGS}")
+#set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OpenMP_CXX_FLAGS}")
+#set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} ${OpenMP_EXE_LINKER_FLAGS}")
+#endif()
 #link_libraries(${OpenMP_LIBRARIES})
 
 find_package(armadillo REQUIRED)
 include_directories(${armadillo_INCLUDE_DIRS})
 set(LIBS ${LIBS} ${armadillo_LIBRARIES})
 
-find_package(FFTW3 REQUIRED)
-include_directories(${FFTW3_INCLUDE_DIRS})
-set (LIBS ${LIBS} ${FFTW_LIBRARIES})
+#find_package(FFTW3 REQUIRED)
+#include_directories(${FFTW3_INCLUDE_DIRS})
+#set (LIBS ${LIBS} ${FFTW_LIBRARIES})
 
 #include_directories(${FFTW_MPI_INCLUDE_DIR})
 #link_libraries(${FFTW_MPI_LIBRARIES})# -lfftw3_mpi) 
 
-include_directories(${FFTW_OMP_INCLUDE_DIR})
-link_libraries(${FFTW_OMP_LIBRARIES})# -lfftw3_omp) 
+#include_directories(${FFTW_OMP_INCLUDE_DIR})
+#link_libraries(${FFTW_OMP_LIBRARIES})# -lfftw3_omp) 
 
 #find_package(HDF5 REQUIRED)
 #include_directories(${HDF5_INCLUDE_DIRS})
 #set (LIBS ${LIBS} ${HDF5_LIBRARIES})
-
-
 
 #enable_language (Fortran)
 
@@ -71,11 +69,6 @@ link_libraries(${FFTW_OMP_LIBRARIES})# -lfftw3_omp)
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -march=native -std=c++11")
 set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -Wall -march=native")
 
-
-
-#find_package(HDF5 REQUIRED)
-#include_directories(${HDF5_INCLUDE_DIRS})
-#set (LIBS ${LIBS} ${HDF5_LIBRARIES})
 
 # ----------------------------------------------------------------- #
 # --                  Compilation Instructions                   -- #
@@ -100,8 +93,8 @@ add_library(${PROJECT_NAME} SHARED ${SRC_LIST})
 set_target_properties (
   ${PROJECT_NAME}
   PROPERTIES
-    VERSION   ${KbPro_VERSION_MAJOR}.${KbPro_VERSION_MINOR}.${KbPro_VERSION_RELEASE}
-    SOVERSION ${KbPro_VERSION_MAJOR}.${KbPro_VERSION_MINOR}.${KbPro_VERSION_RELEASE}
+    VERSION   ${DiffElec_VERSION_MAJOR}.${DiffElec_VERSION_MINOR}.${DiffElec_VERSION_RELEASE}
+    SOVERSION ${DiffElec_VERSION_MAJOR}.${DiffElec_VERSION_MINOR}.${DiffElec_VERSION_RELEASE}
 )
 
 # Link dependencies
@@ -111,14 +104,9 @@ target_link_libraries(${PROJECT_NAME} ${LIBS})
 install (TARGETS ${PROJECT_NAME} DESTINATION lib)
 install (DIRECTORY include/ DESTINATION include)
 
-# -- KbPro tests
+# -- DiffElec tests
 include(CTest)
 add_subdirectory(tests)
-
-# -- KbPro drivers
-#add_subdirectory(drivers/TimeIndependent/SingleComp)
-#add_subdirectory(drivers/TimeDependent/SingleComp)
-#add_subdirectory(drivers/TimeDependent/SingleCompRegCoulomb)
 
 # -- Python library
 #add_subdirectory(python_module)
