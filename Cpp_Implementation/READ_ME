@@ -1,0 +1,26 @@
+
+
+To Check
+
+
+* Namespaces: absolument necessaire ??
+
+* arma::vec : no member operator^, non plus avec pow(A,p)
+
+* Include : test -> include kbpro.txt sans specifier dossier... comment?
+
+* cmake : boost OK, mais armadillo :
+
+	 CMake Error at CMakeLists.txt:48 (find_package):
+		  By not providing "Findarmadillo.cmake" in CMAKE_MODULE_PATH this project
+		  has asked CMake to find a package configuration file provided by
+		  "armadillo", but CMake did not find one.
+
+		  Could not find a package configuration file provided by "armadillo" with
+		  any of the following names:
+
+		    armadilloConfig.cmake
+		    armadillo-config.cmake
+
+* cmake : compilation instruction
+

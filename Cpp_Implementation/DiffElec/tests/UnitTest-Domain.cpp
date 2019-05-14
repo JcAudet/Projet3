@@ -7,9 +7,9 @@
 */
 
 #include<gtest/gtest.h>
-#include<diff_elec>
+// #include<diffelec>
 
-using namespace diff_elec;
+// using namespace diff_elec;
 
 TEST(Domain,Domain2D)
 {

@@ -22,5 +22,5 @@ fi
 
 # Change to build dir and compile the library.
 cd build
-cmake -DCache_DIR = /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/diff_elec/build
+cmake ..
 make $@

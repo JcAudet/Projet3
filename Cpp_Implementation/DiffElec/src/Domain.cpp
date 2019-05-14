@@ -1,12 +1,12 @@
-#include "Domain.h"
+#include "../include/DiffElec_bits/Domain.h"
 
-namespace diff_elec
-{
+//namespace diff_elec
+//{
 
 Domain::Domain(int numThreads, unsigned int dim) : dim_(dim)
 {
     ptCoords_.resize(dim_);
-    dx.resize(dim_);
+    dx_.resize(dim_);
 }
 
 void Domain::save(std::string nameOfFile)
@@ -25,7 +25,7 @@ void Domain::save(std::string nameOfFile)
 
 Domain2D::Domain2D(unsigned int numPointX1,unsigned int numPointX2,
                 double x1Min, double x1Max,
-                double x2Min, double x2Min,
+                double x2Min, double x2Max,
                 int numThreads=1) : Domain(numThreads,2)
 {
     numPointsPerDim_.push_back(numPointX1);
@@ -42,8 +42,8 @@ Domain2D::Domain2D(unsigned int numPointX1,unsigned int numPointX2,
         totNumPoints_*= numPointsPerDim_[i];
 
         // Compute distance between each point
-        if(numPointsPerDim_[i] == 1) dx[i]=1.0;
-        else dx[i] = std::abs(maxX_[i]-minX_[i]) / double(numPointsPerDim_[i]-1);
+        if(numPointsPerDim_[i] == 1) dx_[i]=1.0;
+        else dx_[i] = std::abs(maxX_[i]-minX_[i]) / double(numPointsPerDim_[i]-1);
 
         // Compute the diffential volume elements
         diffVolumeEl_ *= dx_[i];
@@ -58,4 +58,4 @@ Domain2D::Domain2D(unsigned int numPointX1,unsigned int numPointX2,
 
 }
 
-} // namespace diff_elec
+//} // namespace diff_elec
