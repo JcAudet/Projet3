@@ -10,25 +10,26 @@
 1557943608 source:/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/src/Domain.cpp
 	"../include/DiffElec_bits/Domain.h"
 
-1557943523 /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Domain.h
+1557951124 /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Domain.h
 	<vector>
 	<string>
 	<armadillo>
 
-1557873733 source:/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/src/Psi.cpp
+1557950485 source:/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/src/Psi.cpp
 	"../include/DiffElec_bits/Psi.h"
 
-1557873764 /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Psi.h
-	<string>
+1557950776 /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Psi.h
 	"Domain.h"
+	"constants.h"
+	"MM2.h"
 
-1557944656 source:/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/src/MM2.cpp
+1557950550 source:/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/src/MM2.cpp
 	"../include/DiffElec_bits/MM2.h"
 
-1557944611 /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/MM2.h
-	<complex>
+1557950541 /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/MM2.h
 	"constants.h"
 	"Pot.h"
+	"Psi.h"
 
 1557944011 /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/constants.h
 	<complex>

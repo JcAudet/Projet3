@@ -7,13 +7,13 @@
 */
 
 #include<gtest/gtest.h>
-// #include<diffelec>
+#include"../include/diffelec"
 
-// using namespace diff_elec;
+using namespace DiffElec;
 
 TEST(Domain,Domain2D)
 {
-    Domain2D* myDom = new Domain2D(100,100,-10,10,-20,20);
+    Domain2D* myDom = new Domain2D(100,100,-10.0,10.0,-20.0,20.0,1);
 
     ASSERT_EQ(100,myDom->getTotNumPointsPerDim(0));
     ASSERT_EQ(100,myDom->getTotNumPointsPerDim(1));
@@ -28,7 +28,7 @@ TEST(Domain,Domain2D)
     ASSERT_DOUBLE_EQ(40.0/99.0,myDom->getDx(1));
     ASSERT_DOUBLE_EQ(20.0*20.0/(99.0*99.0),myDom->getDiffVolumeEl());
 
-    for*std::size_t i=0 ; i<50 ; i++)
+    for(std::size_t i=0 ; i<50 ; i++)
     {
         double value_x = myDom->getMin(0) + i*myDom->getDx(0);
         double value_y = myDom->getMin(1) + i*myDom->getDx(1);
@@ -37,7 +37,7 @@ TEST(Domain,Domain2D)
         ASSERT_EQ(value_y,myDom->getPtCoords(1,i));
     }
 
-    delte myDom;
+    delete myDom;
 
 }
 

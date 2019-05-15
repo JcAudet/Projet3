@@ -22,7 +22,7 @@ class Domain
         virtual ~Domain(){}
 
         // Getters
-        unsigned int getTotNumPoint(){return totNumPoints_;}
+        unsigned int getTotNumPoints(){return totNumPoints_;}
         unsigned int getTotNumPointsPerDim(unsigned int dim){return numPointsPerDim_[dim];}
         double getMin(unsigned int dim){return minX_[dim];}
         double getMax(unsigned int dim){return maxX_[dim];}

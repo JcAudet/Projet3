@@ -51,7 +51,6 @@
 		<Unit filename="../src/Domain.cpp" />
 		<Unit filename="../src/MM2.cpp" />
 		<Unit filename="../src/Pot.cpp" />
-		<Unit filename="../src/Potential.cpp" />
 		<Unit filename="../src/Psi.cpp" />
 		<Unit filename="../tests/UnitTest-Domain.cpp" />
 		<Extensions>

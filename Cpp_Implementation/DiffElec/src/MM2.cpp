@@ -58,4 +58,9 @@ MM2::MM2(Domain2D* dom, Pot* V, double dx, double dy, double dt) :
 
 }
 
+void MM2::solve(arma::cx_vec* psiV)
+{
+    //LINEAR SOLVE!
+}
+
 } //namespace DiffElec

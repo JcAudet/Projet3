@@ -1,8 +1,8 @@
 #pragma once
 
-#include<complex>
 #include"constants.h"
 #include"Pot.h"
+#include"Psi.h"
 
 namespace DiffElec
 {
@@ -18,7 +18,7 @@ class MM2
         arma::cx_vec getCoeff();
 
         // Methods
-
+        void solve(arma::cx_vec* psiV);
 
 
     protected:

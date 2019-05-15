@@ -1,16 +1,18 @@
 #pragma once
 
+#include"Domain.h"
+#include"constants.h"
 #include"MM2.h"
 
 namespace DiffElec
 {
-
+class MM2;
 class Psi
 {
     public:
 
         // tructors
-        Psi(Domain2D* dom, MM2* mmat, double sigmaX, double sigmaY, double kX, double kY, double posX0, double posY0);
+        Psi(Domain2D* dom, MM2* mmat, double sigmaX, double sigmaY, double kX, double kY, double posX0, double posY0, std::string nameOfFile);
         virtual ~Psi(){}
 
         // Getters
@@ -19,10 +21,9 @@ class Psi
         std::vector<double> getpos(){return pos0_;};
 
         // Method
-        void iterate(const std::string nameOfFile);
-        void save(const std::string nameOfFile);
-        double normalizeVec();
-        double trapeze2D();
+        void iterate();
+        void save();
+        double normaliseVec( arma::cx_vec psi);
 
     protected:
 
@@ -30,8 +31,9 @@ class Psi
 
         MM2* mmat_;
 
-        arma::vec psiV_;
-        arma::mat psiM_;
+        std::string nameOfFile_;
+
+        arma::cx_vec psiV_;
 
         std::vector<double> sigma_;
         std::vector<double> k_;
