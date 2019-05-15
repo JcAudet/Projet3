@@ -4,8 +4,8 @@
 #include<string>
 #include<armadillo>
 
-//namespace diff_elec
-//{
+namespace diff_elec
+{
 
 /*!
 * /class Domain
@@ -73,6 +73,6 @@ class Domain2D : public Domain
 };
 
 
-//}; // Namespace: diff_elec
+}; // Namespace: diff_elec
 
 

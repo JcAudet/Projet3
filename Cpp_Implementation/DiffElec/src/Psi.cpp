@@ -2,8 +2,8 @@
 
 #include "../include/DiffElec_bits/Psi.h"
 
-//namespace DiffElec
-//{
+namespace DiffElec
+{
 
 Psi::Psi(Domain2D* dom, double sigmaX, double sigmaY, double kX, double kY, double posX0, double posY0):
     dom_(dom)
@@ -51,4 +51,4 @@ void Psi::save(std::string nameOfFile)
 };
 
 
-//}; // namespace DiffElec
+}; // namespace DiffElec

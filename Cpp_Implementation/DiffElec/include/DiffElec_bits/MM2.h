@@ -2,12 +2,17 @@
 #define MM2_H
 
 #include<armadillo>
+#include<constants.h>
+#include<Potential.h>
+
+namespace DiffElec
+{
 
 class MM2
 {
     public:
         // Tructors
-        MM2(arma::mat V, double dx, double dy, double dt);
+        MM2(Domain2D* dom, Pot* V, double dx, double dy, double dt);
         virtual ~MM2(){};
 
         // Getters
@@ -19,8 +24,15 @@ class MM2
 
     protected:
 
-    sp_cx_mat M; // sp_cx_mat --> SpMat<std::complex<double>>
-    sp_cx_mat M2;
+    Domain2D* dom_;
+
+    sp_cx_mat M_; // sp_cx_mat --> SpMat<std::complex<double>>
+    sp_cx_mat M2_;
+
+    Pot* V_;
+    double dx_;
+    double dy_;
+    double dt_;
 
     complex<double> b_;
     complex<double> f_;
@@ -30,5 +42,7 @@ class MM2
     complex<double> k_;
 
 };
+
+} // namespace DiffElec
 
 #endif // MM2_H

@@ -45,9 +45,12 @@
 		<Unit filename="../build/CMakeFiles/feature_tests.cxx" />
 		<Unit filename="../include/DiffElec_bits/Domain.h" />
 		<Unit filename="../include/DiffElec_bits/MM2.h" />
+		<Unit filename="../include/DiffElec_bits/Potential.h" />
 		<Unit filename="../include/DiffElec_bits/Psi.h" />
+		<Unit filename="../include/DiffElec_bits/constants.h" />
 		<Unit filename="../src/Domain.cpp" />
 		<Unit filename="../src/MM2.cpp" />
+		<Unit filename="../src/Potential.cpp" />
 		<Unit filename="../src/Psi.cpp" />
 		<Unit filename="../tests/UnitTest-Domain.cpp" />
 		<Extensions>

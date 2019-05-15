@@ -3,8 +3,8 @@
 #include<string>
 #include"Domain.h"
 
-//namespace DiffElec
-//{
+namespace DiffElec
+{
 
 class Psi
 {
@@ -22,6 +22,7 @@ class Psi
         // Method
         void iterate(const std::string nameOfFile);
         void save(const std::string nameOfFile);
+        double normalizeVec[...]
 
     protected:
 
@@ -36,5 +37,5 @@ class Psi
 
 };
 
-//}; // Namespace DiffElec
+}; // Namespace DiffElec
 

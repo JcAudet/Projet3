@@ -1,7 +1,7 @@
 #include "../include/DiffElec_bits/Domain.h"
 
-//namespace diff_elec
-//{
+namespace diff_elec
+{
 
 Domain::Domain(int numThreads, unsigned int dim) : dim_(dim)
 {
@@ -58,4 +58,4 @@ Domain2D::Domain2D(unsigned int numPointX1,unsigned int numPointX2,
 
 }
 
-//} // namespace diff_elec
+} // namespace diff_elec

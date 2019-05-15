@@ -2,10 +2,7 @@
 
 To Check
 
-
-* Namespaces: absolument necessaire ??
-
-* arma::vec : no member operator^, non plus avec pow(A,p)
+* arma::vec : no member operator^, non plus avec pow(A,p) ****
 
 * Include : test -> include kbpro.txt sans specifier dossier... comment?
 
@@ -22,5 +19,8 @@ To Check
 		    armadilloConfig.cmake
 		    armadillo-config.cmake
 
+.... Print debug -- cmake documentation
+
 * cmake : compilation instruction
 
+* Pragma once VS if!def
