@@ -1,9 +1,8 @@
-#ifndef MM2_H
-#define MM2_H
+#pragma once
 
-#include<armadillo>
-#include<constants.h>
-#include<Potential.h>
+#include<complex>
+#include"constants.h"
+#include"Pot.h"
 
 namespace DiffElec
 {
@@ -24,25 +23,25 @@ class MM2
 
     protected:
 
-    Domain2D* dom_;
-
-    sp_cx_mat M_; // sp_cx_mat --> SpMat<std::complex<double>>
-    sp_cx_mat M2_;
-
     Pot* V_;
+    Domain2D* dom_;
     double dx_;
     double dy_;
     double dt_;
 
-    complex<double> b_;
-    complex<double> f_;
-    complex<double> c_;
-    complex<double> d_;
-    complex<double> g_;
-    complex<double> k_;
+    arma::cx_vec b_;
+    arma::cx_vec f_;
+    std::complex<double> c_;
+    std::complex<double> d_;
+    std::complex<double> g_;
+    std::complex<double> k_;
+
+    unsigned int totElem_;
+
+    arma::sp_cx_mat M_; // sp_cx_mat --> SpMat<std::complex<double>>
+    arma::sp_cx_mat M2_;
 
 };
 
-} // namespace DiffElec
+}; // namespace DiffElec
 
-#endif // MM2_H

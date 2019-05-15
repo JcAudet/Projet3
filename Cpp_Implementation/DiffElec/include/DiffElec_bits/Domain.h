@@ -4,7 +4,7 @@
 #include<string>
 #include<armadillo>
 
-namespace diff_elec
+namespace DiffElec
 {
 
 /*!
@@ -19,7 +19,7 @@ class Domain
     public:
 
         // Virtual Destructor
-        virtual ~Domain(){};
+        virtual ~Domain(){}
 
         // Getters
         unsigned int getTotNumPoint(){return totNumPoints_;}
@@ -69,10 +69,8 @@ class Domain2D : public Domain
                 int numThreads);
 
         // Default Destructor
-        virtual ~Domain2D(){};
+        virtual ~Domain2D(){}
 };
 
 
 }; // Namespace: diff_elec
-
-

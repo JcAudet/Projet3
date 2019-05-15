@@ -1,4 +1,6 @@
 #pragma once
 
 #include <DiffElec_bits/Domain.h>
-#include <DiffElec_bits/Psi.h
+#include <DiffElec_bits/Psi.h>
+#include <DiffElec_bits/MM2.h>
+#include <DiffElec_bits/Pot.g

@@ -1,6 +1,6 @@
 #include "../include/DiffElec_bits/Domain.h"
 
-namespace diff_elec
+namespace DiffElec
 {
 
 Domain::Domain(int numThreads, unsigned int dim) : dim_(dim)
