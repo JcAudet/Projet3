@@ -1,13 +1,13 @@
 # ---------------------------------------- #
-# KbPro build script                       #
-# -----------------------------------------#
+#         DiffElec build script            #
+# ---------------------------------------- #
 
-# -----------------------------------------#
-# This script simply calls CMake from the  #
-# build directory and compiles the library.#
-#                                          #
-# Usage: bash build.sh {make_arg}          #
-# -----------------------------------------#
+# ----------------------------------------- #
+# This script simply calls CMake from the   #
+# build directory and compiles the library. #
+#                                           #
+# Usage: bash build.sh {make_arg}           #
+# ----------------------------------------- #
 
 # Change to file directory. 
 cd "$(dirname "$(realpath "$0")")";

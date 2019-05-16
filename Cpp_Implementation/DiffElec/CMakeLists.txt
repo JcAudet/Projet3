@@ -2,11 +2,12 @@
 # Author:       Jean-Christophe Gagnon-Audet			              #
 # Date:         2019-05-14                                                    #
 # Description:  CMake compilation instructions.                               #
-# ----------------------------------------------------------------------------#
+# --------------------------------------------------------------------------- #
 
 # ----------------------------------------------------------------- #
 # --                 Name and version of library                 -- #
 # ----------------------------------------------------------------- #
+
 project(DiffElec)
 set (DiffElec_VERSION_MAJOR 0)
 set (DiffElec_VERSION_MINOR 1)
@@ -15,7 +16,9 @@ set (DiffElec_VERSION_RELEASE 0)
 # ----------------------------------------------------------------- #
 # --               Configuration and Dependencies                -- #
 # ----------------------------------------------------------------- #
+
 # -- CMake version and installation directory.
+
 cmake_minimum_required(VERSION 3.0.2)
 if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
     set (CMAKE_INSTALL_PREFIX /usr)
@@ -66,6 +69,7 @@ set(LIBS ${LIBS} ${armadillo_LIBRARIES})
 #enable_language (Fortran)
 
 # -- Compiler config (flags and such)
+
 set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3 -Wall -march=native -std=c++11")
 set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -Wall -march=native")
 
@@ -73,23 +77,24 @@ set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -Wall -march=native")
 # ----------------------------------------------------------------- #
 # --                  Compilation Instructions                   -- #
 # ----------------------------------------------------------------- #
+
 # -- Included files
+
 include_directories (${CMAKE_CURRENT_SOURCE_DIR}/include INC_LIST)
 
 # -- Source files
+
 aux_source_directory (${CMAKE_CURRENT_SOURCE_DIR}/src SRC_LIST)
 aux_source_directory (${CMAKE_CURRENT_SOURCE_DIR}/src/fft SRC_LIST)
 aux_source_directory (${CMAKE_CURRENT_SOURCE_DIR}/src/ComputeSelfEnergy SRC_LIST)
 aux_source_directory (${CMAKE_CURRENT_SOURCE_DIR}/src/TwoTimesPropagation SRC_LIST)
 
+# -- Build a shared library
 
-# -- Build a shared library
-# -- Build a shared library
 add_library(${PROJECT_NAME} SHARED ${SRC_LIST})
 
+# -- Define the properties of the library to be built (version and other stuff).
 
-# Define the properties of the library to
-# be built (version and other stuff).
 set_target_properties (
   ${PROJECT_NAME}
   PROPERTIES
@@ -97,14 +102,17 @@ set_target_properties (
     SOVERSION ${DiffElec_VERSION_MAJOR}.${DiffElec_VERSION_MINOR}.${DiffElec_VERSION_RELEASE}
 )
 
-# Link dependencies
+# -- Link dependencies
+
 target_link_libraries(${PROJECT_NAME} ${LIBS})
 
-# Install directories
+# -- Install directories
+
 install (TARGETS ${PROJECT_NAME} DESTINATION lib)
 install (DIRECTORY include/ DESTINATION include)
 
 # -- DiffElec tests
+
 include(CTest)
 add_subdirectory(tests)
 
@@ -114,13 +122,13 @@ add_subdirectory(tests)
 # ----------------------------------------------------------------- #
 # --                   Generate Documentation                    -- #
 # ----------------------------------------------------------------- #
-# add a target to generate API documentation with Doxygen
+
+# -- add a target to generate API documentation with Doxygen
 #find_package(Doxygen)
 #if(DOXYGEN_FOUND)
 #configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile @ONLY)
 #add_custom_target(
 #  doc ALL ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/Doxyfile
 #      WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-#      COMMENT "Generating API documentation with Doxygen" VERBATIM
-#)
+#      COMMENT "Generating API documentation with Doxygen" VERBATIM)
 #endif(DOXYGEN_FOUND)

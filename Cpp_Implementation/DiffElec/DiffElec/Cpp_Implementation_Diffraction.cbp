@@ -43,6 +43,7 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="../build/CMakeFiles/feature_tests.cxx" />
+		<Unit filename="../drivers/main.cpp" />
 		<Unit filename="../include/DiffElec_bits/Domain.h" />
 		<Unit filename="../include/DiffElec_bits/MM2.h" />
 		<Unit filename="../include/DiffElec_bits/Pot.h" />

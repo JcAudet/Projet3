@@ -1,4 +1,6 @@
 #pragma once
+#pragma message("Domain Included")
+
 
 #include<vector>
 #include<string>
@@ -66,7 +68,7 @@ class Domain2D : public Domain
         Domain2D(unsigned int numPointX1,unsigned int numPointX2,
                 double x1Min, double x1Max,
                 double x2Min, double x2Max,
-                int numThreads);
+                int numThreads=1);
 
         // Default Destructor
         virtual ~Domain2D(){}

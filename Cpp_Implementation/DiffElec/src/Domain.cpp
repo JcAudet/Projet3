@@ -26,7 +26,7 @@ void Domain::save(std::string nameOfFile)
 Domain2D::Domain2D(unsigned int numPointX1,unsigned int numPointX2,
                 double x1Min, double x1Max,
                 double x2Min, double x2Max,
-                int numThreads=1) : Domain(numThreads,2)
+                int numThreads) : Domain(numThreads,2)
 {
     numPointsPerDim_.push_back(numPointX1);
     numPointsPerDim_.push_back(numPointX2);

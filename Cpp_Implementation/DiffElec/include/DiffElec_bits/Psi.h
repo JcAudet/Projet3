@@ -1,4 +1,5 @@
 #pragma once
+#pragma message("Psi Included")
 
 #include"Domain.h"
 #include"constants.h"
@@ -23,7 +24,7 @@ class Psi
         // Method
         void iterate();
         void save();
-        double normaliseVec( arma::cx_vec psi);
+        double normaliseMat(arma::cx_mat& psi);
 
     protected:
 

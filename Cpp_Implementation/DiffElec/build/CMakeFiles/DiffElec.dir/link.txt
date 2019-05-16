@@ -1,0 +1,1 @@
+/usr/bin/c++ -fPIC  -O3 -Wall -march=native -std=c++11  -shared -Wl,-soname,libDiffElec.so.0.1.0 -o libDiffElec.so.0.1.0 CMakeFiles/DiffElec.dir/src/Domain.cpp.o CMakeFiles/DiffElec.dir/src/MM2.cpp.o CMakeFiles/DiffElec.dir/src/Pot.cpp.o CMakeFiles/DiffElec.dir/src/Psi.cpp.o -larmadillo 

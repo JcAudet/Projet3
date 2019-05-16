@@ -2,10 +2,6 @@
 
 To Check
 
-* arma::vec : no member operator^, non plus avec pow(A,p) ****
-
-* Include : test -> include kbpro.txt sans specifier dossier... comment?
-
 * cmake : boost OK, mais armadillo :
 
 	 CMake Error at CMakeLists.txt:48 (find_package):

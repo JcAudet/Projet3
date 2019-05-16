@@ -4,3 +4,4 @@
 #include "DiffElec_bits/Psi.h"
 #include "DiffElec_bits/MM2.h"
 #include "DiffElec_bits/Pot.h"
+#include "DiffElec_bits/constants.h"

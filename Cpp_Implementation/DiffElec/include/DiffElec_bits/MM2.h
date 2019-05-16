@@ -1,4 +1,5 @@
 #pragma once
+#pragma message("MM2 Included")
 
 #include"constants.h"
 #include"Pot.h"
@@ -11,14 +12,14 @@ class MM2
 {
     public:
         // Tructors
-        MM2(Domain2D* dom, Pot* V, double dx, double dy, double dt);
+        MM2(Domain2D* dom, Pot* V, double dt);
         virtual ~MM2(){};
 
         // Getters
         arma::cx_vec getCoeff();
 
         // Methods
-        void solve(arma::cx_vec* psiV);
+        arma::cx_vec solve(arma::cx_vec* psiV);
 
 
     protected:

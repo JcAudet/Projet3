@@ -4,8 +4,8 @@
 namespace DiffElec
 {
 
-MM2::MM2(Domain2D* dom, Pot* V, double dx, double dy, double dt) :
-    V_(V), dom_(dom), dx_(dx), dy_(dy), dt_(dt)
+MM2::MM2(Domain2D* dom, Pot* V, double dt) :
+    V_(V), dom_(dom), dx_(dom->getDx(0)), dy_(dom->getDx(1)), dt_(dt)
 {
     // Getting 2D potential in 1D rep
     arma::vec VVec = V_->getVectorized();
@@ -58,9 +58,14 @@ MM2::MM2(Domain2D* dom, Pot* V, double dx, double dy, double dt) :
 
 }
 
-void MM2::solve(arma::cx_vec* psiV)
+arma::cx_vec MM2::solve(arma::cx_vec* psiV)
 {
-    //LINEAR SOLVE!
+    arma::cx_vec B = M2_ * *psiV;
+    arma::cx_vec sol;
+    bool success = spsolve(sol,M_,B);
+
+    return sol;
+
 }
 
 } //namespace DiffElec

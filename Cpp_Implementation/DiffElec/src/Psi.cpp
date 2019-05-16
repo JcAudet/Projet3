@@ -6,7 +6,7 @@ namespace DiffElec
 {
 
 Psi::Psi(Domain2D* dom, MM2* mmat, double sigmaX, double sigmaY, double kX, double kY, double posX0, double posY0, std::string nameOfFile):
-    dom_(dom), nameOfFile_(nameOfFile)
+    dom_(dom), mmat_(mmat),nameOfFile_(nameOfFile)
 {
 
 
@@ -23,6 +23,10 @@ Psi::Psi(Domain2D* dom, MM2* mmat, double sigmaX, double sigmaY, double kX, doub
     arma::cx_colvec tempPsiY = exp(-arma::pow( dom_->getCoords(1)-pos0_[1] ,2 ) / pow( sigma_[1],2 ) ) * exp(I * k_[1] * dom_->getCoords(1) );
 
     arma::cx_mat psiMat = tempPsiY * tempPsiX;
+
+    // Normalisation and storing
+    psiMat = normaliseMat(psiMat);
+
     psiV_ = arma::vectorise(psiMat);
 
 }
@@ -30,9 +34,16 @@ Psi::Psi(Domain2D* dom, MM2* mmat, double sigmaX, double sigmaY, double kX, doub
 void Psi::iterate()
 {
 
-    mmat_->solve(&psiV_); // need output
+    psiV_ = mmat_->solve(&psiV_);
     save();
 
+}
+
+double Psi::normaliseMat(arma::cx_mat& psi)
+{
+    double norm = dom_->getDiffVolumeEl() * arma::sum(arma::sum(arma::pow(arma::abs(psi),2)));
+    psi /= norm;
+    return dom_->getDiffVolumeEl() * arma::sum(arma::sum(arma::pow(arma::abs(psi),2)));
 }
 
 void Psi::save()
