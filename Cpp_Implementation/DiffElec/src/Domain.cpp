@@ -39,10 +39,10 @@ Domain2D::Domain2D(unsigned int numPointX1,unsigned int numPointX2,
     for(std::size_t i=0 ; i<dim_ ; i++)
     {
         // Compute total num of points
-        totNumPoints_*= numPointsPerDim_[i];
+        totNumPoints_ *= numPointsPerDim_[i];
 
         // Compute distance between each point
-        if(numPointsPerDim_[i] == 1) dx_[i]=1.0;
+        if(numPointsPerDim_[i] == 1) dx_[i] = 1.0;
         else dx_[i] = std::abs(maxX_[i]-minX_[i]) / double(numPointsPerDim_[i]-1);
 
         // Compute the diffential volume elements

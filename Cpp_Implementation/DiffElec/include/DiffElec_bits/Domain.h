@@ -42,12 +42,15 @@ class Domain
         Domain(int numThreads, unsigned int dim);
 
         std::vector<arma::vec> ptCoords_;
-        std::vector<unsigned int> numPointsPerDim_;
+
         unsigned int totNumPoints_;
         unsigned int dim_;
+
+        std::vector<unsigned int> numPointsPerDim_;
         std::vector<double> minX_;
         std::vector<double> maxX_;
         std::vector<double> dx_;
+
         double diffVolumeEl_;
 
 };
