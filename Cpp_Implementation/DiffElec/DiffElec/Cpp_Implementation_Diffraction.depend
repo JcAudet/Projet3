@@ -59,3 +59,63 @@
 	<boost/property_tree/ptree.hpp>
 	<boost/property_tree/ini_parser.hpp>
 
+1558016600 source:/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/3.10.2/CompilerIdC/CMakeCCompilerId.c
+
+1558016600 source:/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/3.10.2/CompilerIdCXX/CMakeCXXCompilerId.cpp
+
+1558016600 source:/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/feature_tests.c
+
+1558016600 source:/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/feature_tests.cxx
+
+1558015483 source:/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/drivers/main.cpp
+	"../include/diffelec"
+	<boost/property_tree/ptree.hpp>
+	<boost/property_tree/ini_parser.hpp>
+
+1558015483 /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/diffelec
+	"DiffElec_bits/Domain.h"
+	"DiffElec_bits/Psi.h"
+	"DiffElec_bits/MM2.h"
+	"DiffElec_bits/Pot.h"
+	"DiffElec_bits/constants.h"
+
+1558017054 /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Domain.h
+	<vector>
+	<string>
+	<armadillo>
+
+1558017060 /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Psi.h
+	"Domain.h"
+	"constants.h"
+	"MM2.h"
+
+1558015483 /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/constants.h
+	<complex>
+	<boost/units/systems/si/codata/universal_constants.hpp>
+	<boost/units/systems/si/codata/electron_constants.hpp>
+	<boost/math/constants/constants.hpp>
+
+1558017017 /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/MM2.h
+	"constants.h"
+	"Pot.h"
+	"Psi.h"
+
+1558017061 /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Pot.h
+	"Domain.h"
+
+1558015483 source:/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Domain.cpp
+	"../include/DiffElec_bits/Domain.h"
+
+1558015483 source:/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/MM2.cpp
+	"../include/DiffElec_bits/MM2.h"
+
+1558015483 source:/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Pot.cpp
+	"../include/DiffElec_bits/Pot.h"
+
+1558015483 source:/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Psi.cpp
+	"../include/DiffElec_bits/Psi.h"
+
+1558015483 source:/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/tests/UnitTest-Domain.cpp
+	<gtest/gtest.h>
+	"../include/diffelec"
+

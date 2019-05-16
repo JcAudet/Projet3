@@ -1,5 +1,4 @@
 #pragma once
-#pragma message("Domain Included")
 
 
 #include<vector>

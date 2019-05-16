@@ -1,5 +1,4 @@
 #pragma once
-#pragma message("Psi Included")
 
 #include"Domain.h"
 #include"constants.h"

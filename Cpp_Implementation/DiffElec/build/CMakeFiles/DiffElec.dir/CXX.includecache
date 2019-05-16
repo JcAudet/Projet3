@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Domain.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Domain.h
 vector
 -
 string
@@ -14,27 +14,27 @@ string
 armadillo
 -
 
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/MM2.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/MM2.h
 constants.h
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/constants.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/constants.h
 Pot.h
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Pot.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Pot.h
 Psi.h
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Psi.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Psi.h
 
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Pot.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Pot.h
 Domain.h
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Domain.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Domain.h
 
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Psi.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Psi.h
 Domain.h
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Domain.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Domain.h
 constants.h
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/constants.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/constants.h
 MM2.h
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/MM2.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/MM2.h
 
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/constants.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/constants.h
 complex
 -
 boost/units/systems/si/codata/universal_constants.hpp
@@ -44,19 +44,19 @@ boost/units/systems/si/codata/electron_constants.hpp
 boost/math/constants/constants.hpp
 -
 
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/src/Domain.cpp
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Domain.cpp
 ../include/DiffElec_bits/Domain.h
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Domain.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Domain.h
 
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/src/MM2.cpp
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/MM2.cpp
 ../include/DiffElec_bits/MM2.h
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/MM2.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/MM2.h
 
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/src/Pot.cpp
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Pot.cpp
 ../include/DiffElec_bits/Pot.h
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Pot.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Pot.h
 
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/src/Psi.cpp
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Psi.cpp
 ../include/DiffElec_bits/Psi.h
-/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Psi.h
+/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Psi.h
 

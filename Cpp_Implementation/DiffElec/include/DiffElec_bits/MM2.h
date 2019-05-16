@@ -1,5 +1,4 @@
 #pragma once
-#pragma message("MM2 Included")
 
 #include"constants.h"
 #include"Pot.h"

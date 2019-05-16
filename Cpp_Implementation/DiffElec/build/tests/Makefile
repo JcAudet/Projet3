@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec
+CMAKE_SOURCE_DIR = /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build
+CMAKE_BINARY_DIR = /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -103,8 +103,8 @@ list_install_components/fast: list_install_components
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
+	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -137,14 +137,14 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	cd /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build/tests/CMakeFiles/progress.marks
-	cd /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f CMakeFiles/Makefile2 tests/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles 0
+	cd /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(CMAKE_COMMAND) -E cmake_progress_start /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/tests/CMakeFiles/progress.marks
+	cd /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f CMakeFiles/Makefile2 tests/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f CMakeFiles/Makefile2 tests/clean
+	cd /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f CMakeFiles/Makefile2 tests/clean
 .PHONY : clean
 
 # The main clean target
@@ -154,22 +154,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
+	cd /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
+	cd /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f CMakeFiles/Makefile2 tests/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 tests/CMakeFiles/UnitTest-Domain.dir/rule:
-	cd /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/UnitTest-Domain.dir/rule
+	cd /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f CMakeFiles/Makefile2 tests/CMakeFiles/UnitTest-Domain.dir/rule
 .PHONY : tests/CMakeFiles/UnitTest-Domain.dir/rule
 
 # Convenience name for target.
@@ -179,7 +179,7 @@ UnitTest-Domain: tests/CMakeFiles/UnitTest-Domain.dir/rule
 
 # fast build rule for target.
 UnitTest-Domain/fast:
-	cd /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f tests/CMakeFiles/UnitTest-Domain.dir/build.make tests/CMakeFiles/UnitTest-Domain.dir/build
+	cd /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f tests/CMakeFiles/UnitTest-Domain.dir/build.make tests/CMakeFiles/UnitTest-Domain.dir/build
 .PHONY : UnitTest-Domain/fast
 
 UnitTest-Domain.o: UnitTest-Domain.cpp.o
@@ -188,7 +188,7 @@ UnitTest-Domain.o: UnitTest-Domain.cpp.o
 
 # target to build an object file
 UnitTest-Domain.cpp.o:
-	cd /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f tests/CMakeFiles/UnitTest-Domain.dir/build.make tests/CMakeFiles/UnitTest-Domain.dir/UnitTest-Domain.cpp.o
+	cd /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f tests/CMakeFiles/UnitTest-Domain.dir/build.make tests/CMakeFiles/UnitTest-Domain.dir/UnitTest-Domain.cpp.o
 .PHONY : UnitTest-Domain.cpp.o
 
 UnitTest-Domain.i: UnitTest-Domain.cpp.i
@@ -197,7 +197,7 @@ UnitTest-Domain.i: UnitTest-Domain.cpp.i
 
 # target to preprocess a source file
 UnitTest-Domain.cpp.i:
-	cd /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f tests/CMakeFiles/UnitTest-Domain.dir/build.make tests/CMakeFiles/UnitTest-Domain.dir/UnitTest-Domain.cpp.i
+	cd /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f tests/CMakeFiles/UnitTest-Domain.dir/build.make tests/CMakeFiles/UnitTest-Domain.dir/UnitTest-Domain.cpp.i
 .PHONY : UnitTest-Domain.cpp.i
 
 UnitTest-Domain.s: UnitTest-Domain.cpp.s
@@ -206,7 +206,7 @@ UnitTest-Domain.s: UnitTest-Domain.cpp.s
 
 # target to generate assembly for a file
 UnitTest-Domain.cpp.s:
-	cd /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f tests/CMakeFiles/UnitTest-Domain.dir/build.make tests/CMakeFiles/UnitTest-Domain.dir/UnitTest-Domain.cpp.s
+	cd /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(MAKE) -f tests/CMakeFiles/UnitTest-Domain.dir/build.make tests/CMakeFiles/UnitTest-Domain.dir/UnitTest-Domain.cpp.s
 .PHONY : UnitTest-Domain.cpp.s
 
 # Help Target
@@ -237,6 +237,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

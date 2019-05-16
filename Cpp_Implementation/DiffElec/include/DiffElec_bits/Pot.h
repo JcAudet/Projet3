@@ -1,5 +1,4 @@
 #pragma once
-#pragma message("Pot Included")
 
 #include"Domain.h"
 

@@ -1,4 +1,4 @@
-# Install script for directory: /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/tests
+# Install script for directory: /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/tests
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
