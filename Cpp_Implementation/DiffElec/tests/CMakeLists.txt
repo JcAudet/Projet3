@@ -19,4 +19,5 @@ set(LIBS ${LIBS} ${GTEST_LIBRARIES})
 # -- Executables for tests
 add_executable("UnitTest-Domain" "UnitTest-Domain.cpp")
 target_link_libraries("UnitTest-Domain" DiffElec ${LIBS})
+target_link_libraries("UnitTest-Domain" ${GTEST_LIBRARIES} pthread)
 add_test(NAME "UnitTest-Domain" COMMAND $<TARGET_FILE:UnitTest-Domain>)

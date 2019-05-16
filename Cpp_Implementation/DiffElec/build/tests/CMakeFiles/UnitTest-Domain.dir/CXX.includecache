@@ -53,6 +53,8 @@ DiffElec_bits/MM2.h
 /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/MM2.h
 DiffElec_bits/Pot.h
 /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Pot.h
+DiffElec_bits/constants.h
+/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/constants.h
 
 /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/tests/UnitTest-Domain.cpp
 gtest/gtest.h

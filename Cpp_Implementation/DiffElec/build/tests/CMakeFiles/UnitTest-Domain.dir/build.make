@@ -93,6 +93,7 @@ tests/UnitTest-Domain: tests/CMakeFiles/UnitTest-Domain.dir/build.make
 tests/UnitTest-Domain: libDiffElec.so.0.1.0
 tests/UnitTest-Domain: /usr/lib/libarmadillo.so
 tests/UnitTest-Domain: /usr/lib/libgtest.a
+tests/UnitTest-Domain: /usr/lib/libgtest.a
 tests/UnitTest-Domain: tests/CMakeFiles/UnitTest-Domain.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable UnitTest-Domain"
 	cd /home/jc_audet/Documents/Projet3/Projet3/Cpp_Implementation/DiffElec/build/tests && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/UnitTest-Domain.dir/link.txt --verbose=$(VERBOSE)
