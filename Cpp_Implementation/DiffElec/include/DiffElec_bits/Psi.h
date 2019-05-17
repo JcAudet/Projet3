@@ -35,6 +35,8 @@ class Psi
 
         arma::cx_vec psiV_;
 
+        double norm_;
+
         std::vector<double> sigma_;
         std::vector<double> k_;
         std::vector<double> pos0_;

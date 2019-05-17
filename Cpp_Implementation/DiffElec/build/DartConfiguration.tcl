@@ -4,14 +4,14 @@
 
 
 # Configuration directories and files
-SourceDirectory: /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec
-BuildDirectory: /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build
+SourceDirectory: /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec
+BuildDirectory: /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build
 
 # Where to place the cost data store
 CostDataFile: 
 
 # Site is something like machine.domain, i.e. pragmatic.crd
-Site: jcaudet-System-Product-Name
+Site: JCAudet-XPS-15-9550
 
 # Build name is osname-revision-compiler, i.e. Linux-2.4.2-2smp-c++
 BuildName: Linux-c++
@@ -36,7 +36,7 @@ ScpCommand: /usr/bin/scp
 NightlyStartTime: 00:00:00 EDT
 
 # Commands for the build/test/submit cycle
-ConfigureCommand: "/usr/bin/cmake" "/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec"
+ConfigureCommand: "/usr/bin/cmake" "/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec"
 MakeCommand: /usr/bin/cmake --build . --config "${CTEST_CONFIGURATION_TYPE}" -- -i
 DefaultCTestConfigurationType: Release
 
@@ -81,7 +81,7 @@ ValgrindCommand:
 ValgrindCommandOptions: 
 MemoryCheckType: 
 MemoryCheckSanitizerOptions: 
-MemoryCheckCommand: MEMORYCHECK_COMMAND-NOTFOUND
+MemoryCheckCommand: /usr/bin/valgrind
 MemoryCheckCommandOptions: 
 MemoryCheckSuppressionFile: 
 

@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec
+CMAKE_SOURCE_DIR = /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build
+CMAKE_BINARY_DIR = /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/DiffElec.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/DiffElec.dir/flags.make
 
 CMakeFiles/DiffElec.dir/src/Domain.cpp.o: CMakeFiles/DiffElec.dir/flags.make
 CMakeFiles/DiffElec.dir/src/Domain.cpp.o: ../src/Domain.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/DiffElec.dir/src/Domain.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DiffElec.dir/src/Domain.cpp.o -c /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Domain.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/DiffElec.dir/src/Domain.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DiffElec.dir/src/Domain.cpp.o -c /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Domain.cpp
 
 CMakeFiles/DiffElec.dir/src/Domain.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DiffElec.dir/src/Domain.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Domain.cpp > CMakeFiles/DiffElec.dir/src/Domain.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Domain.cpp > CMakeFiles/DiffElec.dir/src/Domain.cpp.i
 
 CMakeFiles/DiffElec.dir/src/Domain.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DiffElec.dir/src/Domain.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Domain.cpp -o CMakeFiles/DiffElec.dir/src/Domain.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Domain.cpp -o CMakeFiles/DiffElec.dir/src/Domain.cpp.s
 
 CMakeFiles/DiffElec.dir/src/Domain.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/DiffElec.dir/src/Domain.cpp.o.provides.build: CMakeFiles/DiffElec.dir
 
 CMakeFiles/DiffElec.dir/src/MM2.cpp.o: CMakeFiles/DiffElec.dir/flags.make
 CMakeFiles/DiffElec.dir/src/MM2.cpp.o: ../src/MM2.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DiffElec.dir/src/MM2.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DiffElec.dir/src/MM2.cpp.o -c /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/MM2.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/DiffElec.dir/src/MM2.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DiffElec.dir/src/MM2.cpp.o -c /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/MM2.cpp
 
 CMakeFiles/DiffElec.dir/src/MM2.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DiffElec.dir/src/MM2.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/MM2.cpp > CMakeFiles/DiffElec.dir/src/MM2.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/MM2.cpp > CMakeFiles/DiffElec.dir/src/MM2.cpp.i
 
 CMakeFiles/DiffElec.dir/src/MM2.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DiffElec.dir/src/MM2.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/MM2.cpp -o CMakeFiles/DiffElec.dir/src/MM2.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/MM2.cpp -o CMakeFiles/DiffElec.dir/src/MM2.cpp.s
 
 CMakeFiles/DiffElec.dir/src/MM2.cpp.o.requires:
 
@@ -107,16 +107,16 @@ CMakeFiles/DiffElec.dir/src/MM2.cpp.o.provides.build: CMakeFiles/DiffElec.dir/sr
 
 CMakeFiles/DiffElec.dir/src/Pot.cpp.o: CMakeFiles/DiffElec.dir/flags.make
 CMakeFiles/DiffElec.dir/src/Pot.cpp.o: ../src/Pot.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DiffElec.dir/src/Pot.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DiffElec.dir/src/Pot.cpp.o -c /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Pot.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/DiffElec.dir/src/Pot.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DiffElec.dir/src/Pot.cpp.o -c /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Pot.cpp
 
 CMakeFiles/DiffElec.dir/src/Pot.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DiffElec.dir/src/Pot.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Pot.cpp > CMakeFiles/DiffElec.dir/src/Pot.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Pot.cpp > CMakeFiles/DiffElec.dir/src/Pot.cpp.i
 
 CMakeFiles/DiffElec.dir/src/Pot.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DiffElec.dir/src/Pot.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Pot.cpp -o CMakeFiles/DiffElec.dir/src/Pot.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Pot.cpp -o CMakeFiles/DiffElec.dir/src/Pot.cpp.s
 
 CMakeFiles/DiffElec.dir/src/Pot.cpp.o.requires:
 
@@ -131,16 +131,16 @@ CMakeFiles/DiffElec.dir/src/Pot.cpp.o.provides.build: CMakeFiles/DiffElec.dir/sr
 
 CMakeFiles/DiffElec.dir/src/Psi.cpp.o: CMakeFiles/DiffElec.dir/flags.make
 CMakeFiles/DiffElec.dir/src/Psi.cpp.o: ../src/Psi.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/DiffElec.dir/src/Psi.cpp.o"
-	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DiffElec.dir/src/Psi.cpp.o -c /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Psi.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/DiffElec.dir/src/Psi.cpp.o"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/DiffElec.dir/src/Psi.cpp.o -c /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Psi.cpp
 
 CMakeFiles/DiffElec.dir/src/Psi.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/DiffElec.dir/src/Psi.cpp.i"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Psi.cpp > CMakeFiles/DiffElec.dir/src/Psi.cpp.i
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Psi.cpp > CMakeFiles/DiffElec.dir/src/Psi.cpp.i
 
 CMakeFiles/DiffElec.dir/src/Psi.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/DiffElec.dir/src/Psi.cpp.s"
-	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Psi.cpp -o CMakeFiles/DiffElec.dir/src/Psi.cpp.s
+	/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Psi.cpp -o CMakeFiles/DiffElec.dir/src/Psi.cpp.s
 
 CMakeFiles/DiffElec.dir/src/Psi.cpp.o.requires:
 
@@ -170,7 +170,7 @@ libDiffElec.so.0.1.0: CMakeFiles/DiffElec.dir/src/Psi.cpp.o
 libDiffElec.so.0.1.0: CMakeFiles/DiffElec.dir/build.make
 libDiffElec.so.0.1.0: /usr/lib/libarmadillo.so
 libDiffElec.so.0.1.0: CMakeFiles/DiffElec.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library libDiffElec.so"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library libDiffElec.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DiffElec.dir/link.txt --verbose=$(VERBOSE)
 	$(CMAKE_COMMAND) -E cmake_symlink_library libDiffElec.so.0.1.0 libDiffElec.so.0.1.0 libDiffElec.so
 
@@ -194,6 +194,6 @@ CMakeFiles/DiffElec.dir/clean:
 .PHONY : CMakeFiles/DiffElec.dir/clean
 
 CMakeFiles/DiffElec.dir/depend:
-	cd /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/DiffElec.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/DiffElec.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/DiffElec.dir/depend
 

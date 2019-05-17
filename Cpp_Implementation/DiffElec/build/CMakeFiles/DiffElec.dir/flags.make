@@ -6,5 +6,5 @@ CXX_FLAGS =  -O3 -Wall -march=native -std=c++11 -fPIC
 
 CXX_DEFINES = -DDiffElec_EXPORTS
 
-CXX_INCLUDES = -I/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include -I/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/INC_LIST 
+CXX_INCLUDES = -I/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/include -I/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/INC_LIST 
 

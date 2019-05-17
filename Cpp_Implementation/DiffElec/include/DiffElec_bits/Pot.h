@@ -11,18 +11,20 @@ class Pot
 
         // Tructors
         Pot(Domain2D* dom);
-        virtual ~Pot(){}
+        virtual ~Pot(){
+            delete V_;
+        }
 
         // Getters
-        arma::mat getV(){return V_;}
+        arma::mat* getV(){return V_;}
         arma::vec getVectorized(){
-            return arma::vectorise(V_,0);
+            return arma::vectorise(*V_,0);
         }
 
     protected:
 
         Domain2D* dom_;
-        arma::mat V_;
+        arma::mat* V_;
 
 };
 

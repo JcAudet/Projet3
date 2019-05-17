@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec
+CMAKE_SOURCE_DIR = /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build
+CMAKE_BINARY_DIR = /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -114,8 +114,8 @@ test/fast: test
 
 # Special rule for the target edit_cache
 edit_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake cache editor..."
-	/usr/bin/cmake-gui -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
+	/usr/bin/cmake -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -137,9 +137,9 @@ install/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -545,6 +545,32 @@ ExperimentalStart/fast:
 .PHONY : ExperimentalStart/fast
 
 #=============================================================================
+# Target rules for targets named UnitTest-MM2
+
+# Build rule for target.
+UnitTest-MM2: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 UnitTest-MM2
+.PHONY : UnitTest-MM2
+
+# fast build rule for target.
+UnitTest-MM2/fast:
+	$(MAKE) -f tests/CMakeFiles/UnitTest-MM2.dir/build.make tests/CMakeFiles/UnitTest-MM2.dir/build
+.PHONY : UnitTest-MM2/fast
+
+#=============================================================================
+# Target rules for targets named UnitTest-Psi
+
+# Build rule for target.
+UnitTest-Psi: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 UnitTest-Psi
+.PHONY : UnitTest-Psi
+
+# fast build rule for target.
+UnitTest-Psi/fast:
+	$(MAKE) -f tests/CMakeFiles/UnitTest-Psi.dir/build.make tests/CMakeFiles/UnitTest-Psi.dir/build
+.PHONY : UnitTest-Psi/fast
+
+#=============================================================================
 # Target rules for targets named UnitTest-Domain
 
 # Build rule for target.
@@ -556,6 +582,32 @@ UnitTest-Domain: cmake_check_build_system
 UnitTest-Domain/fast:
 	$(MAKE) -f tests/CMakeFiles/UnitTest-Domain.dir/build.make tests/CMakeFiles/UnitTest-Domain.dir/build
 .PHONY : UnitTest-Domain/fast
+
+#=============================================================================
+# Target rules for targets named UnitTest-Pot
+
+# Build rule for target.
+UnitTest-Pot: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 UnitTest-Pot
+.PHONY : UnitTest-Pot
+
+# fast build rule for target.
+UnitTest-Pot/fast:
+	$(MAKE) -f tests/CMakeFiles/UnitTest-Pot.dir/build.make tests/CMakeFiles/UnitTest-Pot.dir/build
+.PHONY : UnitTest-Pot/fast
+
+#=============================================================================
+# Target rules for targets named main
+
+# Build rule for target.
+main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 main
+.PHONY : main
+
+# fast build rule for target.
+main/fast:
+	$(MAKE) -f drivers/CMakeFiles/main.dir/build.make drivers/CMakeFiles/main.dir/build
+.PHONY : main/fast
 
 src/Domain.o: src/Domain.cpp.o
 
@@ -707,7 +759,11 @@ help:
 	@echo "... Nightly"
 	@echo "... NightlyConfigure"
 	@echo "... ExperimentalStart"
+	@echo "... UnitTest-MM2"
+	@echo "... UnitTest-Psi"
 	@echo "... UnitTest-Domain"
+	@echo "... UnitTest-Pot"
+	@echo "... main"
 	@echo "... src/Domain.o"
 	@echo "... src/Domain.i"
 	@echo "... src/Domain.s"

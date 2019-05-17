@@ -18,7 +18,7 @@ class MM2
         arma::cx_vec getCoeff();
 
         // Methods
-        arma::cx_vec solve(arma::cx_vec* psiV);
+        bool solve(arma::cx_vec* psiV);
 
 
     protected:

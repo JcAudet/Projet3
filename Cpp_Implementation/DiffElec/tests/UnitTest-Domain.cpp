@@ -20,13 +20,13 @@ TEST(Domain,Domain2D)
     ASSERT_EQ(100*100,myDom->getTotNumPoints());
 
     ASSERT_NEAR(-10.0,myDom->getMin(0),1.0e-12);
-    ASSERT_NEAR(-10.0,myDom->getMin(1),1.0e-12);
+    ASSERT_NEAR(-20.0,myDom->getMin(1),1.0e-12);
     ASSERT_NEAR(10.0,myDom->getMax(0),1.0e-12);
-    ASSERT_NEAR(10.0,myDom->getMax(1),1.0e-12);
+    ASSERT_NEAR(20.0,myDom->getMax(1),1.0e-12);
 
     ASSERT_DOUBLE_EQ(20.0/99.0,myDom->getDx(0));
     ASSERT_DOUBLE_EQ(40.0/99.0,myDom->getDx(1));
-    ASSERT_DOUBLE_EQ(20.0*20.0/(99.0*99.0),myDom->getDiffVolumeEl());
+    ASSERT_DOUBLE_EQ(20.0*40.0/(99.0*99.0),myDom->getDiffVolumeEl());
 
     for(std::size_t i=0 ; i<50 ; i++)
     {

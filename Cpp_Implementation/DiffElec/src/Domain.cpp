@@ -18,7 +18,7 @@ void Domain::save(std::string nameOfFile)
         myFile.open(nameOfFileDim);
         myFile << std::scientific;
         myFile.precision(15);
-        ptCoords_[i].raw_print(myFile);
+        ptCoords_[i]->raw_print(myFile);
         myFile.close();
     }
 }
@@ -49,10 +49,11 @@ Domain2D::Domain2D(unsigned int numPointX1,unsigned int numPointX2,
         diffVolumeEl_ *= dx_[i];
 
         // Compute the position of points
-        ptCoords_[i].zeros(numPointsPerDim_[i]);
-        for(std::size_t nx=0;i<numPointsPerDim_[i]; nx++)
+        ptCoords_[i] = new arma::vec(numPointsPerDim_[i], arma::fill::zeros);
+
+        for(std::size_t nx=0;nx<numPointsPerDim_[i]; nx++)
         {
-            ptCoords_[i][nx] = minX_[i] + nx*dx_[i];
+            (*ptCoords_[i])[nx] = minX_[i] + nx*dx_[i];
         }
     }
 

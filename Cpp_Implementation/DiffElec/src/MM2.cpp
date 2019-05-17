@@ -24,33 +24,66 @@ MM2::MM2(Domain2D* dom, Pot* V, double dt) :
     totElem_ = 5*VVec.size() - 2 - 2*dom_->getTotNumPointsPerDim(1);
 
     // Creation of sparse location and values
-    arma::umat pos;
-    arma::cx_vec val,val2;
+    arma::umat pos = arma::umat(2,totElem_,arma::fill::zeros);
+    arma::cx_vec val = arma::cx_vec(totElem_,arma::fill::zeros);
+    arma::cx_vec val2 = arma::cx_vec(totElem_,arma::fill::zeros);
+
+    int j=0;
     for(unsigned int i = 0; i<VVec.size(); i++)
     {
-        pos << i << i << arma::endr;
-        val << VVec[i] << arma::endr;
-        val2 << VVec[i] << arma::endr;
+        pos(0,j) = i;
+        pos(1,j) = i;
+        val(j) = VVec[i];
+        val2(j) = VVec[i];
+
+        j+=1;
     }
     for(unsigned int i = dom_->getTotNumPointsPerDim(1); i<VVec.size(); i++)
     {
-        pos << i - dom_->getTotNumPointsPerDim(1) << i << arma::endr;
-        pos << i << i - dom_->getTotNumPointsPerDim(1) << arma::endr;
-        val << c_ << arma::endr << c_ << arma::endr;
-        val2 << g_ << arma::endr << g_ << arma::endr;
+        pos(0,j) = i - dom_->getTotNumPointsPerDim(1);
+        pos(1,j) = i;
+        val(j) = c_;
+        val2(j) = g_;
+
+        j+=1;
+
+        pos(0,j) = i;
+        pos(1,j) = i - dom_->getTotNumPointsPerDim(1);
+        val(j) = c_;
+        val2(j) = g_;
+
+        j+=1;
     }
     for(unsigned int i = 0; i<VVec.size() - 1; i++)
     {
-        pos << i + 1 << i << arma::endr;
-        pos << i << i + 1 << arma::endr;
+        pos(0,j) = i + 1;
+        pos(1,j) = i;
+
         if( i % dom_->getTotNumPointsPerDim(1)!=0 && i!=0 ){
-            val << d_ << arma::endr << d_<< arma::endr;
-            val2 << k_ << arma::endr << k_ << arma::endr;
+            val(j) = d_;
+            val2(j) = k_;
         }
         else {
-            val << 0 << arma::endr << 0 << arma::endr;
-            val2 << 0 << arma::endr << 0 << arma::endr;
-            }
+            val(j) = 0;
+            val2(j) = 0;
+        }
+
+        j+=1;
+
+        pos(0,j) = i;
+        pos(1,j) = i + 1;
+
+        if( i % dom_->getTotNumPointsPerDim(1)!=0 && i!=0 ){
+            val(j) = d_;
+            val2(j) = k_;
+        }
+        else {
+            val(j) = 0;
+            val2(j) = 0;
+        }
+
+        j+=1;
+
     }
 
     M_ = arma::sp_cx_mat(pos,val);
@@ -58,14 +91,19 @@ MM2::MM2(Domain2D* dom, Pot* V, double dt) :
 
 }
 
-arma::cx_vec MM2::solve(arma::cx_vec* psiV)
+bool MM2::solve(arma::cx_vec* psiV)
 {
-    arma::cx_vec B = M2_ * *psiV;
+    arma::cx_vec B = M2_ * (*psiV);
     arma::cx_vec sol;
-    bool success = spsolve(sol,M_,B);
 
-    return sol;
+    arma::superlu_opts opts;
+    opts.allow_ugly = true;
 
+    bool success = spsolve(*psiV,M_,B,"superlu",opts);
+
+    std::cout << success << std::endl;
+
+    return success;
 }
 
 } //namespace DiffElec

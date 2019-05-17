@@ -1,4 +1,4 @@
-# Install script for directory: /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec
+# Install script for directory: /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -50,8 +50,8 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
     endif()
   endforeach()
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES
-    "/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/libDiffElec.so.0.1.0"
-    "/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/libDiffElec.so"
+    "/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/libDiffElec.so.0.1.0"
+    "/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/libDiffElec.so"
     )
   foreach(file
       "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libDiffElec.so.0.1.0"
@@ -67,12 +67,13 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/include/")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include" TYPE DIRECTORY FILES "/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/include/")
 endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/tests/cmake_install.cmake")
+  include("/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/tests/cmake_install.cmake")
+  include("/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/drivers/cmake_install.cmake")
 
 endif()
 
@@ -84,5 +85,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

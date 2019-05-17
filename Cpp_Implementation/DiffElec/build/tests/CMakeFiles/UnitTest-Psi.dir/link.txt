@@ -1,0 +1,1 @@
+/usr/bin/c++   -O3 -Wall -march=native -std=c++11  -rdynamic CMakeFiles/UnitTest-Psi.dir/UnitTest-Psi.cpp.o  -o UnitTest-Psi -Wl,-rpath,/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build ../libDiffElec.so.0.1.0 -larmadillo -Wl,-Bstatic -lgtest -lgtest -Wl,-Bdynamic -lpthread 

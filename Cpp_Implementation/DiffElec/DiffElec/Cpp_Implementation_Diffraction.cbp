@@ -54,6 +54,9 @@
 		<Unit filename="../src/Pot.cpp" />
 		<Unit filename="../src/Psi.cpp" />
 		<Unit filename="../tests/UnitTest-Domain.cpp" />
+		<Unit filename="../tests/UnitTest-MM2.cpp" />
+		<Unit filename="../tests/UnitTest-Pot.cpp" />
+		<Unit filename="../tests/UnitTest-Psi.cpp" />
 		<Extensions>
 			<code_completion />
 			<debugger />

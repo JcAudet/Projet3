@@ -2,8 +2,18 @@
 
 Questions:
 
+* Erreur dans obj/Debug/build/[...]  --->  Multiple definition or '[...]' ---> MAIN // Wrapper // 
+	Undefined reference to 'Testing:: [...]'
+
 * Segmentation fault (Core Dump) // Code ou cmake ?
 
 * Rappel build folder
 
 * Drivers executable?
+
+
+
+NOTE:
+
+** Add CMakeLists to drivers
+** MAIN: ajouter add_subdirectory{drivers/...}

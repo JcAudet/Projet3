@@ -19,8 +19,12 @@ class Domain
 {
     public:
 
+        // Default Constructor
+        Domain(int numThreads, unsigned int dim);
         // Virtual Destructor
-        virtual ~Domain(){}
+        virtual ~Domain(){
+            ptCoords_.clear();
+        }
 
         // Getters
         unsigned int getTotNumPoints(){return totNumPoints_;}
@@ -29,8 +33,8 @@ class Domain
         double getMax(unsigned int dim){return maxX_[dim];}
         double getDx(unsigned int dim){return dx_[dim];}
         double getDiffVolumeEl(){return diffVolumeEl_;}
-        arma::vec getCoords(unsigned int dim){return ptCoords_[dim];}
-        double getPtCoords(unsigned int dim, unsigned int pt){return ptCoords_[dim][pt];}
+        arma::vec getCoords(unsigned int dim){return *ptCoords_[dim];}
+        double getPtCoords(unsigned int dim, unsigned int pt){return (*ptCoords_[dim])[pt];}
         unsigned int getDim(){return dim_;}
 
         // Method
@@ -38,10 +42,7 @@ class Domain
 
     protected:
 
-        // Default Constructor
-        Domain(int numThreads, unsigned int dim);
-
-        std::vector<arma::vec> ptCoords_;
+        std::vector<arma::vec*> ptCoords_;
 
         unsigned int totNumPoints_;
         unsigned int dim_;
@@ -73,7 +74,9 @@ class Domain2D : public Domain
                 int numThreads=1);
 
         // Default Destructor
-        virtual ~Domain2D(){}
+        virtual ~Domain2D(){
+            ptCoords_.clear();
+        }
 };
 
 

@@ -78,16 +78,13 @@ set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -O3 -Wall -march=native")
 # --                  Compilation Instructions                   -- #
 # ----------------------------------------------------------------- #
 
-# -- Included files
+# -- Include
 
 include_directories (${CMAKE_CURRENT_SOURCE_DIR}/include INC_LIST)
 
-# -- Source files
+# -- Include source
 
 aux_source_directory (${CMAKE_CURRENT_SOURCE_DIR}/src SRC_LIST)
-aux_source_directory (${CMAKE_CURRENT_SOURCE_DIR}/src/fft SRC_LIST)
-aux_source_directory (${CMAKE_CURRENT_SOURCE_DIR}/src/ComputeSelfEnergy SRC_LIST)
-aux_source_directory (${CMAKE_CURRENT_SOURCE_DIR}/src/TwoTimesPropagation SRC_LIST)
 
 # -- Build a shared library
 
@@ -115,6 +112,10 @@ install (DIRECTORY include/ DESTINATION include)
 
 include(CTest)
 add_subdirectory(tests)
+
+# -- DiffElec drivers
+
+add_subdirectory(drivers)
 
 # -- Python library
 #add_subdirectory(python_module)

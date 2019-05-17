@@ -1,24 +1,24 @@
 Determining if the pthread_create exist failed with the following output:
-Change Dir: /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp
+Change Dir: /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_48482/fast"
-/usr/bin/make -f CMakeFiles/cmTC_48482.dir/build.make CMakeFiles/cmTC_48482.dir/build
-make[1]: Entering directory '/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_48482.dir/CheckSymbolExists.c.o
-/usr/bin/cc   -O3 -Wall -march=native    -o CMakeFiles/cmTC_48482.dir/CheckSymbolExists.c.o   -c /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
-Linking C executable cmTC_48482
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_48482.dir/link.txt --verbose=1
-/usr/bin/cc  -O3 -Wall -march=native     -rdynamic CMakeFiles/cmTC_48482.dir/CheckSymbolExists.c.o  -o cmTC_48482 
-CMakeFiles/cmTC_48482.dir/CheckSymbolExists.c.o: In function `main':
+Run Build Command:"/usr/bin/make" "cmTC_6ab44/fast"
+/usr/bin/make -f CMakeFiles/cmTC_6ab44.dir/build.make CMakeFiles/cmTC_6ab44.dir/build
+make[1]: Entering directory '/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_6ab44.dir/CheckSymbolExists.c.o
+/usr/bin/cc   -O3 -Wall -march=native    -o CMakeFiles/cmTC_6ab44.dir/CheckSymbolExists.c.o   -c /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c
+Linking C executable cmTC_6ab44
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_6ab44.dir/link.txt --verbose=1
+/usr/bin/cc  -O3 -Wall -march=native     -rdynamic CMakeFiles/cmTC_6ab44.dir/CheckSymbolExists.c.o  -o cmTC_6ab44 
+CMakeFiles/cmTC_6ab44.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text.startup+0x3): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_48482.dir/build.make:97: recipe for target 'cmTC_48482' failed
-make[1]: *** [cmTC_48482] Error 1
-make[1]: Leaving directory '/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_48482/fast' failed
-make: *** [cmTC_48482/fast] Error 2
+CMakeFiles/cmTC_6ab44.dir/build.make:97: recipe for target 'cmTC_6ab44' failed
+make[1]: *** [cmTC_6ab44] Error 1
+make[1]: Leaving directory '/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_6ab44/fast' failed
+make: *** [cmTC_6ab44/fast] Error 2
 
-File /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
+File /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
 #include <pthread.h>
 
@@ -34,22 +34,22 @@ int main(int argc, char** argv)
 }
 
 Determining if the function pthread_create exists in the pthreads failed with the following output:
-Change Dir: /home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp
+Change Dir: /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_24517/fast"
-/usr/bin/make -f CMakeFiles/cmTC_24517.dir/build.make CMakeFiles/cmTC_24517.dir/build
-make[1]: Entering directory '/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_24517.dir/CheckFunctionExists.c.o
-/usr/bin/cc   -O3 -Wall -march=native -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_24517.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
-Linking C executable cmTC_24517
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_24517.dir/link.txt --verbose=1
-/usr/bin/cc  -O3 -Wall -march=native -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_24517.dir/CheckFunctionExists.c.o  -o cmTC_24517 -lpthreads 
+Run Build Command:"/usr/bin/make" "cmTC_af315/fast"
+/usr/bin/make -f CMakeFiles/cmTC_af315.dir/build.make CMakeFiles/cmTC_af315.dir/build
+make[1]: Entering directory '/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp'
+Building C object CMakeFiles/cmTC_af315.dir/CheckFunctionExists.c.o
+/usr/bin/cc   -O3 -Wall -march=native -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_af315.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.10/Modules/CheckFunctionExists.c
+Linking C executable cmTC_af315
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_af315.dir/link.txt --verbose=1
+/usr/bin/cc  -O3 -Wall -march=native -DCHECK_FUNCTION_EXISTS=pthread_create    -rdynamic CMakeFiles/cmTC_af315.dir/CheckFunctionExists.c.o  -o cmTC_af315 -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_24517.dir/build.make:97: recipe for target 'cmTC_24517' failed
-make[1]: *** [cmTC_24517] Error 1
-make[1]: Leaving directory '/home/jcaudet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_24517/fast' failed
-make: *** [cmTC_24517/fast] Error 2
+CMakeFiles/cmTC_af315.dir/build.make:97: recipe for target 'cmTC_af315' failed
+make[1]: *** [cmTC_af315] Error 1
+make[1]: Leaving directory '/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles/CMakeTmp'
+Makefile:126: recipe for target 'cmTC_af315/fast' failed
+make: *** [cmTC_af315/fast] Error 2
 
 
