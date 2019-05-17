@@ -20,7 +20,6 @@ class MM2
         // Methods
         bool solve(arma::cx_vec* psiV);
 
-
     protected:
 
     Pot* V_;

@@ -19,10 +19,6 @@ Psi::Psi(Domain2D* dom, MM2* mmat, double sigmaX, double sigmaY, double kX, doub
     pos0_.push_back(posX0);
     pos0_.push_back(posY0);
 
-    // Initialisation of Wave Packet
-    //auto tempPsiX = exp(- arma::pow( dom_->getCoords(0)-pos0_[0] , 2 ) / pow( sigma_[0],2 ) ) % exp(I * k_[0] * dom_->getCoords(0) );
-    //auto tempPsiY = exp(- arma::pow( dom_->getCoords(1)-pos0_[1] , 2 ) / pow( sigma_[1],2 ) ) % exp(I * k_[1] * dom_->getCoords(1) );
-
     arma::cx_rowvec tPX = arma::cx_rowvec(dom_->getTotNumPointsPerDim(0),arma::fill::zeros);
     for(unsigned int i = 0; i<dom_->getTotNumPointsPerDim(0);i++)
     {
@@ -39,6 +35,8 @@ Psi::Psi(Domain2D* dom, MM2* mmat, double sigmaX, double sigmaY, double kX, doub
     // Normalisation and storing
     norm_ = normaliseMat(psiMat);
 
+    std::cout << norm_ << std::endl;
+
     psiV_ = arma::vectorise(psiMat);
 
 }
@@ -46,31 +44,46 @@ Psi::Psi(Domain2D* dom, MM2* mmat, double sigmaX, double sigmaY, double kX, doub
 void Psi::iterate()
 {
 
-    std::cout << arma::size(psiV_) << std::endl;
     bool success = mmat_->solve(&psiV_);
-    std::cout << arma::size(psiV_) << std::endl;
 
-    save();
+    //save();
 
 }
 
 double Psi::normaliseMat(arma::cx_mat& psi)
 {
     double norm = dom_->getDiffVolumeEl() * arma::sum(arma::sum(arma::pow(arma::abs(psi),2)));
-    psi /= norm;
+    psi = psi / norm;
     return dom_->getDiffVolumeEl() * arma::sum(arma::sum(arma::pow(arma::abs(psi),2)));
 }
 
 void Psi::save()
 {
+
+    arma::cx_mat fP = vec2mat(psiV_);
+
     std::string nameOfFileDat = nameOfFile_ + ".dat";
     std::ofstream myFile;
-    myFile.open(nameOfFileDat);
+    myFile.open(nameOfFileDat,std::ios_base::app);
     myFile << std::scientific;
     myFile.precision(15);
-    psiV_.raw_print(myFile);
+    arma::pow( arma::abs( fP ) , 2 ).raw_print(myFile);
+    //myFile << "////// \n";
     myFile.close();
 };
 
+arma::cx_mat Psi::vec2mat(arma::cx_vec psi)
+{
+    std::cout << dom_->getTotNumPointsPerDim(1) << std::endl;
+
+    size_t rows = std::ceil(psi.n_elem / double(dom_->getTotNumPointsPerDim(1)));
+
+    std::cout << rows << std::endl;
+
+    arma::cx_mat m = reshape(psi, dom_->getTotNumPointsPerDim(1), rows);
+
+    return m;
+
+}
 
 }; // namespace DiffElec

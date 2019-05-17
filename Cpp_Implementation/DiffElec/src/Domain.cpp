@@ -57,6 +57,8 @@ Domain2D::Domain2D(unsigned int numPointX1,unsigned int numPointX2,
         }
     }
 
+    save("Domain");
+
 }
 
 } // namespace diff_elec

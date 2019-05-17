@@ -24,6 +24,7 @@ class Psi
         void iterate();
         void save();
         double normaliseMat(arma::cx_mat& psi);
+        arma::cx_mat vec2mat(arma::cx_vec psi);
 
     protected:
 

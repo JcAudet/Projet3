@@ -91,7 +91,7 @@ UnitTest__Psi_EXTERNAL_OBJECTS =
 tests/UnitTest-Psi: tests/CMakeFiles/UnitTest-Psi.dir/UnitTest-Psi.cpp.o
 tests/UnitTest-Psi: tests/CMakeFiles/UnitTest-Psi.dir/build.make
 tests/UnitTest-Psi: libDiffElec.so.0.1.0
-tests/UnitTest-Psi: /usr/lib/libarmadillo.so
+tests/UnitTest-Psi: /usr/lib/x86_64-linux-gnu/libarmadillo.so
 tests/UnitTest-Psi: /usr/lib/libgtest.a
 tests/UnitTest-Psi: /usr/lib/libgtest.a
 tests/UnitTest-Psi: tests/CMakeFiles/UnitTest-Psi.dir/link.txt

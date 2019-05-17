@@ -22,11 +22,13 @@ int main()
                         pt.get<double>("Wave_Packet.posX0"), pt.get<double>("Wave_Packet.posX0"),
                         pt.get<std::string>("Other.nameOfFile"));
 
-    // Evolve
+    /// Evolve
     for(unsigned int i=0; i< pt.get<unsigned int>("Time.timeSteps"); i++)
     {
         psi->iterate();
     }
+
+    psi->save();
 
     delete dom;
     delete V;

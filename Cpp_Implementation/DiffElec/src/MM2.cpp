@@ -1,5 +1,6 @@
 
 #include"../include/DiffElec_bits/MM2.h"
+#include<iostream>
 
 namespace DiffElec
 {
@@ -33,8 +34,8 @@ MM2::MM2(Domain2D* dom, Pot* V, double dt) :
     {
         pos(0,j) = i;
         pos(1,j) = i;
-        val(j) = VVec[i];
-        val2(j) = VVec[i];
+        val(j) = VVec(i);
+        val2(j) = VVec(i);
 
         j+=1;
     }
@@ -87,6 +88,7 @@ MM2::MM2(Domain2D* dom, Pot* V, double dt) :
     }
 
     M_ = arma::sp_cx_mat(pos,val);
+
     M2_ = arma::sp_cx_mat(pos,val2);
 
 }
@@ -94,12 +96,11 @@ MM2::MM2(Domain2D* dom, Pot* V, double dt) :
 bool MM2::solve(arma::cx_vec* psiV)
 {
     arma::cx_vec B = M2_ * (*psiV);
-    arma::cx_vec sol;
 
     arma::superlu_opts opts;
     opts.allow_ugly = true;
 
-    bool success = spsolve(*psiV,M_,B,"superlu",opts);
+    bool success = spsolve(*psiV, M_, B, "superlu", opts);
 
     std::cout << success << std::endl;
 

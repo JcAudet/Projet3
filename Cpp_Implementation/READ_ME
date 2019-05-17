@@ -2,21 +2,7 @@
 
 To Check
 
-* cmake : boost OK, mais armadillo :
+* Tout roule " Correct "
 
-	 CMake Error at CMakeLists.txt:48 (find_package):
-		  By not providing "Findarmadillo.cmake" in CMAKE_MODULE_PATH this project
-		  has asked CMake to find a package configuration file provided by
-		  "armadillo", but CMake did not find one.
 
-		  Could not find a package configuration file provided by "armadillo" with
-		  any of the following names:
-
-		    armadilloConfig.cmake
-		    armadillo-config.cmake
-
-.... Print debug -- cmake documentation
-
-* cmake : compilation instruction
-
-* Pragma once VS if!def
+* Ecriture des donnes

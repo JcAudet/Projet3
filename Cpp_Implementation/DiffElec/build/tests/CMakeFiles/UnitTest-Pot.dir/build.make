@@ -91,7 +91,7 @@ UnitTest__Pot_EXTERNAL_OBJECTS =
 tests/UnitTest-Pot: tests/CMakeFiles/UnitTest-Pot.dir/UnitTest-Pot.cpp.o
 tests/UnitTest-Pot: tests/CMakeFiles/UnitTest-Pot.dir/build.make
 tests/UnitTest-Pot: libDiffElec.so.0.1.0
-tests/UnitTest-Pot: /usr/lib/libarmadillo.so
+tests/UnitTest-Pot: /usr/lib/x86_64-linux-gnu/libarmadillo.so
 tests/UnitTest-Pot: /usr/lib/libgtest.a
 tests/UnitTest-Pot: /usr/lib/libgtest.a
 tests/UnitTest-Pot: tests/CMakeFiles/UnitTest-Pot.dir/link.txt

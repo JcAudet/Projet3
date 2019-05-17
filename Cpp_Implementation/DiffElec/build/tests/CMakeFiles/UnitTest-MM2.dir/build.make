@@ -91,7 +91,7 @@ UnitTest__MM2_EXTERNAL_OBJECTS =
 tests/UnitTest-MM2: tests/CMakeFiles/UnitTest-MM2.dir/UnitTest-MM2.cpp.o
 tests/UnitTest-MM2: tests/CMakeFiles/UnitTest-MM2.dir/build.make
 tests/UnitTest-MM2: libDiffElec.so.0.1.0
-tests/UnitTest-MM2: /usr/lib/libarmadillo.so
+tests/UnitTest-MM2: /usr/lib/x86_64-linux-gnu/libarmadillo.so
 tests/UnitTest-MM2: /usr/lib/libgtest.a
 tests/UnitTest-MM2: /usr/lib/libgtest.a
 tests/UnitTest-MM2: tests/CMakeFiles/UnitTest-MM2.dir/link.txt

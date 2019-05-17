@@ -91,7 +91,7 @@ main_EXTERNAL_OBJECTS =
 drivers/main: drivers/CMakeFiles/main.dir/main.cpp.o
 drivers/main: drivers/CMakeFiles/main.dir/build.make
 drivers/main: libDiffElec.so.0.1.0
-drivers/main: /usr/lib/libarmadillo.so
+drivers/main: /usr/lib/x86_64-linux-gnu/libarmadillo.so
 drivers/main: drivers/CMakeFiles/main.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable main"
 	cd /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/drivers && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/main.dir/link.txt --verbose=$(VERBOSE)

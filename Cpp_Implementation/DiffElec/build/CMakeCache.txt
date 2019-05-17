@@ -219,7 +219,7 @@ DART_TESTING_TIMEOUT:STRING=1500
 DiffElec_BINARY_DIR:STATIC=/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build
 
 //Dependencies for the target
-DiffElec_LIB_DEPENDS:STATIC=general;/usr/lib/libarmadillo.so;
+DiffElec_LIB_DEPENDS:STATIC=general;/usr/lib/x86_64-linux-gnu/libarmadillo.so;
 
 //Value Computed by CMake
 DiffElec_SOURCE_DIR:STATIC=/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec
@@ -280,7 +280,7 @@ SVNCOMMAND:FILEPATH=SVNCOMMAND-NOTFOUND
 armadillo_INCLUDE_DIR:PATH=/usr/include
 
 //Path to a library.
-armadillo_LIBRARY:FILEPATH=/usr/lib/libarmadillo.so
+armadillo_LIBRARY:FILEPATH=/usr/lib/x86_64-linux-gnu/libarmadillo.so
 
 
 ########################

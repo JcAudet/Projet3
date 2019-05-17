@@ -168,7 +168,7 @@ libDiffElec.so.0.1.0: CMakeFiles/DiffElec.dir/src/MM2.cpp.o
 libDiffElec.so.0.1.0: CMakeFiles/DiffElec.dir/src/Pot.cpp.o
 libDiffElec.so.0.1.0: CMakeFiles/DiffElec.dir/src/Psi.cpp.o
 libDiffElec.so.0.1.0: CMakeFiles/DiffElec.dir/build.make
-libDiffElec.so.0.1.0: /usr/lib/libarmadillo.so
+libDiffElec.so.0.1.0: /usr/lib/x86_64-linux-gnu/libarmadillo.so
 libDiffElec.so.0.1.0: CMakeFiles/DiffElec.dir/link.txt
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Linking CXX shared library libDiffElec.so"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/DiffElec.dir/link.txt --verbose=$(VERBOSE)

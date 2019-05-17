@@ -6,6 +6,14 @@
 
 #IncludeRegexTransform: 
 
+/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/drivers/main.cpp
+../include/diffelec
+/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/include/diffelec
+boost/property_tree/ptree.hpp
+-
+boost/property_tree/ini_parser.hpp
+-
+
 /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Domain.h
 vector
 -
@@ -44,23 +52,15 @@ boost/units/systems/si/codata/electron_constants.hpp
 boost/math/constants/constants.hpp
 -
 
-/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Domain.cpp
-../include/DiffElec_bits/Domain.h
+/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/include/diffelec
+DiffElec_bits/Domain.h
 /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Domain.h
-
-/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/MM2.cpp
-../include/DiffElec_bits/MM2.h
-/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/MM2.h
-iostream
--
-
-/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Pot.cpp
-../include/DiffElec_bits/Pot.h
-/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Pot.h
-
-/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/src/Psi.cpp
-../include/DiffElec_bits/Psi.h
+DiffElec_bits/Psi.h
 /home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Psi.h
-iostream
--
+DiffElec_bits/MM2.h
+/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/MM2.h
+DiffElec_bits/Pot.h
+/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/Pot.h
+DiffElec_bits/constants.h
+/home/jc_audet/Documents/Projet3/Cpp_Implementation/DiffElec/include/DiffElec_bits/constants.h
 

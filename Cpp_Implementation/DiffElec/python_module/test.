@@ -1,0 +1,13 @@
+
+import numpy as np
+
+def vec2mat(a, new_shape):
+
+    padding = (new_shape - numpy.vstack((new_shape, a.shape))).T.tolist()
+
+    return numpy.pad(a, padding, mode='constant')
+
+
+
+
+

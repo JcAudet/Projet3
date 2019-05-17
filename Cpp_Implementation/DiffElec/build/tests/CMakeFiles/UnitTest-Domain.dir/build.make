@@ -91,7 +91,7 @@ UnitTest__Domain_EXTERNAL_OBJECTS =
 tests/UnitTest-Domain: tests/CMakeFiles/UnitTest-Domain.dir/UnitTest-Domain.cpp.o
 tests/UnitTest-Domain: tests/CMakeFiles/UnitTest-Domain.dir/build.make
 tests/UnitTest-Domain: libDiffElec.so.0.1.0
-tests/UnitTest-Domain: /usr/lib/libarmadillo.so
+tests/UnitTest-Domain: /usr/lib/x86_64-linux-gnu/libarmadillo.so
 tests/UnitTest-Domain: /usr/lib/libgtest.a
 tests/UnitTest-Domain: /usr/lib/libgtest.a
 tests/UnitTest-Domain: tests/CMakeFiles/UnitTest-Domain.dir/link.txt
