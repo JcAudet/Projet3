@@ -19,13 +19,16 @@ int main()
 
     DiffElec::Psi* psi = new DiffElec::Psi(dom, mmat, pt.get<double>("Wave_Packet.sigmaX"), pt.get<double>("Wave_Packet.sigmaY"),
                         pt.get<double>("Wave_Packet.kX"), pt.get<double>("Wave_Packet.kY"),
-                        pt.get<double>("Wave_Packet.posX0"), pt.get<double>("Wave_Packet.posX0"),
+                        pt.get<double>("Wave_Packet.posX0"), pt.get<double>("Wave_Packet.posY0"),
                         pt.get<std::string>("Other.nameOfFile"));
 
     /// Evolve
     for(unsigned int i=0; i< pt.get<unsigned int>("Time.timeSteps"); i++)
     {
         psi->iterate();
+
+        std::cout << i << std::endl;
+
     }
 
     psi->save();
@@ -34,10 +37,5 @@ int main()
     delete V;
     delete mmat;
     delete psi;
-
-
-
-
-
 
 }

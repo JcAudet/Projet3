@@ -19,17 +19,18 @@ class Psi
         std::vector<double> getSigma(){return sigma_;};
         std::vector<double> getK(){return k_;};
         std::vector<double> getpos(){return pos0_;};
+        double getNorm(){return norm_;}
 
         // Method
         void iterate();
         void save();
+        double trapezoid(arma::cx_mat psi);
         double normaliseMat(arma::cx_mat& psi);
         arma::cx_mat vec2mat(arma::cx_vec psi);
 
     protected:
 
         Domain2D* dom_;
-
         MM2* mmat_;
 
         std::string nameOfFile_;

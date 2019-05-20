@@ -93,18 +93,15 @@ MM2::MM2(Domain2D* dom, Pot* V, double dt) :
 
 }
 
-bool MM2::solve(arma::cx_vec* psiV)
+arma::cx_vec MM2::solve(arma::cx_vec psiV)
 {
-    arma::cx_vec B = M2_ * (*psiV);
+    arma::cx_vec B = M2_ * psiV;
 
     arma::superlu_opts opts;
     opts.allow_ugly = true;
 
-    bool success = spsolve(*psiV, M_, B, "superlu", opts);
+    return spsolve(M_, B, "superlu", opts);
 
-    std::cout << success << std::endl;
-
-    return success;
 }
 
 } //namespace DiffElec

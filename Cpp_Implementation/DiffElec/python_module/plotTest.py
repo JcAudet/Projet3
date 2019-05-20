@@ -9,14 +9,20 @@ Y = np.loadtxt('Domain_dim1.dat')
 
 X,Y = np.meshgrid(X,Y)
 
-print(Data.shape)
-print(X.shape)
-print(Y.shape)
+dat_max = np.abs(Data).max()
 
-fig = plt.figure()
-ax = fig.add_subplot(111,projection='3d')
+fig, ax = plt.subplots()
 
-ax.plot_surface(X,Y,Data)
+c = ax.pcolormesh(X, Y, Data)
+
+fig.colorbar(c, ax=ax)
 
 plt.show()
+
+#fig = plt.figure()
+#ax = fig.add_subplot(111,projection='3d')
+
+#ax.plot_surface(X,Y,Data)
+
+#plt.show()
 

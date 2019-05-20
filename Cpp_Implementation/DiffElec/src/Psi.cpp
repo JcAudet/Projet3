@@ -1,7 +1,7 @@
 
 
 #include "../include/DiffElec_bits/Psi.h"
-
+#include<typeinfo>
 #include<iostream>
 
 namespace DiffElec
@@ -44,7 +44,7 @@ Psi::Psi(Domain2D* dom, MM2* mmat, double sigmaX, double sigmaY, double kX, doub
 void Psi::iterate()
 {
 
-    bool success = mmat_->solve(&psiV_);
+    psiV_ = mmat_->solve(psiV_);
 
     //save();
 
@@ -52,9 +52,26 @@ void Psi::iterate()
 
 double Psi::normaliseMat(arma::cx_mat& psi)
 {
-    double norm = dom_->getDiffVolumeEl() * arma::sum(arma::sum(arma::pow(arma::abs(psi),2)));
-    psi = psi / norm;
-    return dom_->getDiffVolumeEl() * arma::sum(arma::sum(arma::pow(arma::abs(psi),2)));
+    double norm = trapezoid(psi);
+    std::cout << norm << std::endl;
+    psi = psi / std::sqrt(norm);
+    return trapezoid(psi);
+}
+
+double Psi::trapezoid(arma::cx_mat Psi)
+{
+
+    arma::mat psi = arma::pow( arma::abs(Psi) , 2);
+
+    double sumABCD = psi(0,0) + psi(0, dom_->getTotNumPointsPerDim(0)-1) + psi(dom_->getTotNumPointsPerDim(1)-1,0) + psi(dom_->getTotNumPointsPerDim(1)-1,dom_->getTotNumPointsPerDim(0)-1);
+    double sumA = arma::sum ( psi.row(0) ) - psi(0,0) - psi(0,dom_->getTotNumPointsPerDim(0)-1);
+    double sumB = arma::sum ( psi.row(dom_->getTotNumPointsPerDim(1)-1) ) - psi(dom_->getTotNumPointsPerDim(1)-1,0) - psi(dom_->getTotNumPointsPerDim(1)-1,dom_->getTotNumPointsPerDim(0)-1);
+    double sumC = arma::sum ( psi.col(0) ) - psi(dom_->getTotNumPointsPerDim(1)-1,0) - psi(0,0);
+    double sumD = arma::sum ( psi.col(dom_->getTotNumPointsPerDim(0)-1) ) - psi(0,dom_->getTotNumPointsPerDim(0)-1) - psi(dom_->getTotNumPointsPerDim(1)-1,dom_->getTotNumPointsPerDim(0)-1);
+    double sumF = arma::sum( arma::sum ( psi.submat(1, 1, dom_->getTotNumPointsPerDim(1)-2, dom_->getTotNumPointsPerDim(0)-2) ) );
+
+    return ( dom_->getDiffVolumeEl() / 4 ) * ( sumABCD + 2*(sumA + sumB + sumC + sumD) + 4*sumF );
+
 }
 
 void Psi::save()
@@ -70,6 +87,7 @@ void Psi::save()
     arma::pow( arma::abs( fP ) , 2 ).raw_print(myFile);
     //myFile << "////// \n";
     myFile.close();
+
 };
 
 arma::cx_mat Psi::vec2mat(arma::cx_vec psi)

@@ -13,11 +13,16 @@ using namespace DiffElec;
 
 TEST(Psi,Psi)
 {
-    Domain2D* mydom = new Domain2D(100,100,-10.0,10.0,-20.0,20.0,1);
+    Domain2D* mydom = new Domain2D(100,200,-10.0,10.0,-20.0,20.0,1);
     Pot* mypot = new Pot(mydom);
     MM2* mymm2 = new MM2(mydom,mypot,1);
 
-    Psi* mypsi = new Psi(mydom, mymm2, 1, 1, 1, 1, 1, 1, "test");
+    Psi* mypsi = new Psi(mydom, mymm2, 1, 1, 4, 4, 1, 1, "test");
+
+    ASSERT_EQ(4 , mypsi->getK()[0]);
+    ASSERT_EQ(4 , mypsi->getK()[1]);
+
+    ASSERT_NEAR(1, mypsi->getNorm(),1e-5);
 
     delete mydom;
     delete mypot;
