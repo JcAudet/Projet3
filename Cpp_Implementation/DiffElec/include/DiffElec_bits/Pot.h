@@ -28,4 +28,16 @@ class Pot
 
 };
 
+class Pot1Ft : public Pot
+{
+    public:
+
+        //Tructors
+        Pot1Ft(Domain2D* dom, double V, double xm, double h, double ym, double a);
+        ~Pot1Ft(){
+            delete V_;
+        };
+
+};
+
 }; // namespace DiffElec

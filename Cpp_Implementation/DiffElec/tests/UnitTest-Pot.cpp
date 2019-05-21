@@ -21,6 +21,8 @@ TEST(Pot,Pot)
 
     ASSERT_EQ(100*100, mypot -> getVectorized().size());
 
+    Pot1Ft* myfent = new Pot1Ft(mydom, 1000, 0, 1, 0, 1);
+
     delete mydom;
     delete mypot;
 

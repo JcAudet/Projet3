@@ -14,7 +14,11 @@ int main()
                     pt.get<double>("Domain.xI"), pt.get<double>("Domain.xF"),
                     pt.get<double>("Domain.yI"), pt.get<double>("Domain.yF"));
 
-    DiffElec::Pot* V = new DiffElec::Pot(dom);
+    //DiffElec::Pot* V = new DiffElec::Pot(dom);
+    DiffElec::Pot1Ft* V = new DiffElec::Pot1Ft(dom, pt.get<double>("Potential.V"),
+                                                        pt.get<double>("Potential.xm"),pt.get<double>("Potential.h"),
+                                                        pt.get<double>("Potential.ym"),pt.get<double>("Potential.a"));
+
     DiffElec::MM2* mmat = new DiffElec::MM2(dom, V, pt.get<double>("Time.dt"));
 
     DiffElec::Psi* psi = new DiffElec::Psi(dom, mmat, pt.get<double>("Wave_Packet.sigmaX"), pt.get<double>("Wave_Packet.sigmaY"),

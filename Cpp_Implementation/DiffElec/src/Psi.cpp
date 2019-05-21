@@ -1,7 +1,6 @@
 
 
 #include "../include/DiffElec_bits/Psi.h"
-#include<typeinfo>
 #include<iostream>
 
 namespace DiffElec
@@ -19,6 +18,7 @@ Psi::Psi(Domain2D* dom, MM2* mmat, double sigmaX, double sigmaY, double kX, doub
     pos0_.push_back(posX0);
     pos0_.push_back(posY0);
 
+    // Creation of initiale state
     arma::cx_rowvec tPX = arma::cx_rowvec(dom_->getTotNumPointsPerDim(0),arma::fill::zeros);
     for(unsigned int i = 0; i<dom_->getTotNumPointsPerDim(0);i++)
     {
@@ -29,14 +29,11 @@ Psi::Psi(Domain2D* dom, MM2* mmat, double sigmaX, double sigmaY, double kX, doub
     {
         tPY(i) = exp(-pow( dom_->getPtCoords(1,i)-pos0_[1] , 2 ) / pow(sigma_[1],2) ) * exp(I * k_[1] * dom_->getPtCoords(1,i) );
     }
-
+    // Outer product
     arma::cx_mat psiMat = tPY * tPX;
 
     // Normalisation and storing
     norm_ = normaliseMat(psiMat);
-
-    std::cout << norm_ << std::endl;
-
     psiV_ = arma::vectorise(psiMat);
 
 }
@@ -44,7 +41,9 @@ Psi::Psi(Domain2D* dom, MM2* mmat, double sigmaX, double sigmaY, double kX, doub
 void Psi::iterate()
 {
 
-    psiV_ = mmat_->solve(psiV_);
+    arma::cx_vec temp = mmat_->solve(psiV_);
+
+    psiV_ = temp;
 
     //save();
 
@@ -53,7 +52,6 @@ void Psi::iterate()
 double Psi::normaliseMat(arma::cx_mat& psi)
 {
     double norm = trapezoid(psi);
-    std::cout << norm << std::endl;
     psi = psi / std::sqrt(norm);
     return trapezoid(psi);
 }
@@ -92,12 +90,8 @@ void Psi::save()
 
 arma::cx_mat Psi::vec2mat(arma::cx_vec psi)
 {
-    std::cout << dom_->getTotNumPointsPerDim(1) << std::endl;
 
     size_t rows = std::ceil(psi.n_elem / double(dom_->getTotNumPointsPerDim(1)));
-
-    std::cout << rows << std::endl;
-
     arma::cx_mat m = reshape(psi, dom_->getTotNumPointsPerDim(1), rows);
 
     return m;
